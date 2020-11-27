@@ -1,0 +1,12 @@
+# os
+.DS_Store
+
+# editor
+.vscode
+.idea
+
+# php
+vendor
+
+# project
+build
