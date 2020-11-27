@@ -1,0 +1,13 @@
+{
+  "name": "skills17-phpunit-helpers",
+  "image": "mcr.microsoft.com/vscode/devcontainers/php:7.4",
+  "remoteUser": "vscode",
+  "extensions": [
+    "felixfbecker.php-debug",
+    "bmewburn.vscode-intelephense-client"
+  ],
+  "settings": {
+    "php.suggest.basic": false
+  },
+  "postCreateCommand": "composer install"
+}

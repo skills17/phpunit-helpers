@@ -1,0 +1,13 @@
+{
+    "name": "skills17/phpunit-helpers",
+    "description": "This package provides some phpunit helpers for usage in a skills competition environment.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cyril Wanner",
+            "email": "info@cyr.li"
+        }
+    ],
+    "require": {}
+}
