@@ -3,11 +3,23 @@
     "description": "This package provides some phpunit helpers for usage in a skills competition environment.",
     "type": "library",
     "license": "MIT",
+    "require": {
+        "phpunit/phpunit": "^9"
+    },
     "authors": [
         {
             "name": "Cyril Wanner",
             "email": "info@cyr.li"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Skills17\\PHPUnit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Skills17\\PHPUnit\\Test\\": "tests/"
+        }
+    }
 }
