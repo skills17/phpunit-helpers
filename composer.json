@@ -6,6 +6,13 @@
     "require": {
         "phpunit/phpunit": "^9"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "composer --working-dir=tests/integration/minimal install"
+        ],
+        "lint": "phpcs",
+        "lint:fix": "phpcbf"
+    },
     "authors": [
         {
             "name": "Cyril Wanner",
@@ -21,5 +28,8 @@
         "psr-4": {
             "Skills17\\PHPUnit\\Test\\": "tests/"
         }
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5"
     }
 }

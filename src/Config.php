@@ -2,14 +2,21 @@
 
 namespace Skills17\PHPUnit;
 
-class Config {
+use ReflectionClass;
+
+class Config
+{
     /**
      * Get the test configuration.
      * Default values can be overwritten with environment variables.
      */
     public static function get()
     {
-        $configFile = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'config.json';
+        // get project root
+        $classLoader = new ReflectionClass(\Composer\Autoload\ClassLoader::class);
+        $projectRoot = dirname($classLoader->getFileName(), 3);
+
+        $configFile = $projectRoot() . 'config.json';
 
         if (!file_exists($configFile)) {
             echo "Config file (config.json) does not exist\n";

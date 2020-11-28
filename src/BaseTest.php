@@ -2,7 +2,7 @@
 
 namespace Skills17\PHPUnit;
 
-use \PDO;
+use PDO;
 use PHPUnit\Framework\TestCase;
 
 abstract class BaseTest extends TestCase
@@ -25,8 +25,8 @@ abstract class BaseTest extends TestCase
                 $this->db = new PDO($dsn, 'root', '', [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']);
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (\PDOException $e) {
-                echo 'Unable to connect to the database! '.$e->getMessage()."\n";
-                echo 'DSN: '.$dsn . ', User: root, Password: no'."\n";
+                echo 'Unable to connect to the database! ' . $e->getMessage() . "\n";
+                echo 'DSN: ' . $dsn . ', User: root, Password: no' . "\n";
                 exit(1);
             }
         }
@@ -41,7 +41,8 @@ abstract class BaseTest extends TestCase
             return;
         }
 
-        $dumpFile = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'db-dump.sql';
+        $dumpFile = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
+            DIRECTORY_SEPARATOR . 'db-dump.sql';
 
         if (!file_exists($dumpFile)) {
             echo "Database dump (db-dump.sql) does not exist\n";
@@ -66,8 +67,8 @@ abstract class BaseTest extends TestCase
                     $this->db->exec($statement);
                 } catch (\PDOException $e) {
                     $this->db->rollBack();
-                    echo 'Error during DB reset: '.$e->getMessage()."\n";
-                    echo 'Statement: '.$statement."\n";
+                    echo 'Error during DB reset: ' . $e->getMessage() . "\n";
+                    echo 'Statement: ' . $statement . "\n";
                     exit(1);
                 }
                 $statement = '';

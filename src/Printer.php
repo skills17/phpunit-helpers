@@ -1,17 +1,27 @@
 <?php
 
+namespace Skills17\PHPUnit;
+
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Framework\Test;
 use PHPUnit\TextUI\DefaultResultPrinter;
 use Skills17\PHPUnit\Config;
 
-class Trade17Printer extends DefaultResultPrinter {
+class Trade17Printer extends DefaultResultPrinter
+{
     private $results = [];
     private $criteria;
     private $hasExtraTests = false;
     private $json = false;
 
-    public function __construct($out = null, bool $verbose = false, string $colors = self::COLOR_DEFAULT, bool $debug = false, $numberOfColumns = 80, bool $reverse = false) {
+    public function __construct(
+        $out = null,
+        bool $verbose = false,
+        string $colors = self::COLOR_DEFAULT,
+        bool $debug = false,
+        $numberOfColumns = 80,
+        bool $reverse = false
+    ) {
         parent::__construct($out, $verbose, $colors, $debug, $numberOfColumns, $reverse);
 
         $config = Config::get();
@@ -47,7 +57,10 @@ class Trade17Printer extends DefaultResultPrinter {
             parent::printFooter($result);
 
             $this->write("\n\n");
-            $this->writeWithColor('fg-black, bg-green', '------------       RESULT       ------------');
+            $this->writeWithColor(
+                'fg-black, bg-green',
+                '------------       RESULT       ------------'
+            );
             $this->write("\nSummary:\n");
         }
 
@@ -88,10 +101,10 @@ class Trade17Printer extends DefaultResultPrinter {
 
             // Print the group header
             if ($this->json) {
-                $this->write('    "'.$key.'": ');
+                $this->write('    "' . $key . '": ');
                 $this->write(!$manualCheckRequired ? $points : '"manual_check"');
             } else {
-                $pointsText = "$points/$maxPoints point".($points !== 1 ? 's' : '');
+                $pointsText = "$points/$maxPoints point" . ($points !== 1 ? 's' : '');
 
                 $color = 'fg-red';
                 if ($points === $maxPoints) {
@@ -120,7 +133,10 @@ class Trade17Printer extends DefaultResultPrinter {
                         $resultText = 'failed';
                         $resultSymbol = '✗';
                         $resultColor = 'red';
-                    } else if ($result['main'] === true && (!$this->hasExtraTests || !isset($result['extra']) || $result['extra'] === true)) {
+                    } elseif (
+                        $result['main'] === true &&
+                        (!$this->hasExtraTests || !isset($result['extra']) || $result['extra'] === true)
+                    ) {
                         $resultText = 'ok';
                         $resultSymbol = '✓';
                         $resultColor = 'green';
@@ -151,19 +167,25 @@ class Trade17Printer extends DefaultResultPrinter {
 
         if ($this->hasExtraTests && count($missingMainTests) > 0) {
             $this->write("\n\n\n");
-            $this->writeWithColor('fg-yellow', 'WARNING: the following extra tests do not belong to a main test and were ignored:');
+            $this->writeWithColor(
+                'fg-yellow',
+                'WARNING: the following extra tests do not belong to a main test and were ignored:'
+            );
 
             foreach ($missingMainTests as $missingMainTest) {
-                $this->write('  - '.$missingMainTest."\n");
+                $this->write('  - ' . $missingMainTest . "\n");
             }
         }
 
         if ($this->hasExtraTests && count($missingExtraTests) > 0) {
             $this->write("\n\n\n");
-            $this->writeWithColor('fg-yellow', 'WARNING: the following tests do NOT have extra tests and so can NOT be checked for possible cheating:');
+            $this->writeWithColor(
+                'fg-yellow',
+                'WARNING: the following tests do NOT have extra tests and so can NOT be checked for possible cheating:'
+            );
 
             foreach ($missingExtraTests as $missingExtraTest) {
-                $this->write('  - '.$missingExtraTest."\n");
+                $this->write('  - ' . $missingExtraTest . "\n");
             }
         }
 

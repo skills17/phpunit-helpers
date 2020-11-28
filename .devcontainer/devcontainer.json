@@ -4,10 +4,17 @@
   "remoteUser": "vscode",
   "extensions": [
     "felixfbecker.php-debug",
-    "bmewburn.vscode-intelephense-client"
+    "bmewburn.vscode-intelephense-client",
+    "wongjn.php-sniffer"
   ],
   "settings": {
-    "php.suggest.basic": false
+    "[php]": {
+      "editor.defaultFormatter": "wongjn.php-sniffer",
+      "editor.formatOnSave": true,
+      "editor.rulers": [120]
+    },
+    "php.suggest.basic": false,
+    "phpSniffer.autoDetect": true
   },
   "postCreateCommand": "composer install"
 }
