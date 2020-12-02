@@ -43,11 +43,13 @@ class IntegrationTest extends TestCase
 
         $actualOutput = $this->runComposerCommand($integrationTest, 'test');
 
-        $this->assertEquals($this->replaceUsageLine($expectedOutput), $this->replaceUsageLine($actualOutput));
+        $this->assertEquals($this->standardizeOutput($expectedOutput), $this->standardizeOutput($actualOutput));
     }
 
-    private function replaceUsageLine(string $output): string
+    private function standardizeOutput(string $output): string
     {
-        return preg_replace('/Time: \d{2}:\d{2}\.\d{3}, Memory: \d+\.\d+ [^\n]+\n/s', '', $output);
+        $result = preg_replace('/Time: \d{2}:\d{2}\.\d{3}, Memory: \d+\.\d+ [^\n]+\n/s', '', $output);
+        $result = preg_replace('/\n[^\n]+(\/tests\/integration\/[a-zA-Z0-9_.\/-]+.php:\d+\n)/s', '$1', $result);
+        return $result;
     }
 }
