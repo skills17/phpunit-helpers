@@ -12,7 +12,8 @@ class IntegrationTest extends TestCase
      */
     public function testIntegration(string $name): void
     {
-        $this->assertCommandOutput($name, 'expected.txt');
+        $this->assertComposerCommandOutput($name, 'test', 'expected.txt');
+        $this->assertComposerCommandOutput($name, 'test:json', 'expected.json');
     }
 
     public function integrationProvider(): array
@@ -32,16 +33,16 @@ class IntegrationTest extends TestCase
     private function runComposerCommand(string $integrationTest, string $command): string
     {
         $dir = __DIR__ . DIRECTORY_SEPARATOR . $integrationTest;
-        return shell_exec('composer --working-dir=' . $dir . ' ' . $command);
+        return shell_exec('composer --working-dir=' . $dir . ' ' . $command . ' 2> /dev/null');
     }
 
-    private function assertCommandOutput(string $integrationTest, string $expectedFile)
+    private function assertComposerCommandOutput(string $integrationTest, string $command, string $expectedFile)
     {
         $expectedOutputPath = __DIR__ . DIRECTORY_SEPARATOR . $integrationTest . DIRECTORY_SEPARATOR . $expectedFile;
         $this->assertTrue(file_exists($expectedOutputPath));
         $expectedOutput = file_get_contents($expectedOutputPath);
 
-        $actualOutput = $this->runComposerCommand($integrationTest, 'test');
+        $actualOutput = $this->runComposerCommand($integrationTest, $command);
 
         $this->assertEquals($this->standardizeOutput($expectedOutput), $this->standardizeOutput($actualOutput));
     }

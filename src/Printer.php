@@ -57,13 +57,12 @@ class ResultPrinter extends DefaultResultPrinter
      */
     protected function printFooter(TestResult $result): void
     {
+        $json = ['testResults' => [], 'warnings' => []];
         $missingExtraTests = [];
         $missingMainTests = [];
         $emptyGroups = [];
 
-        if ($this->json) {
-            $this->write("{\n");
-        } else {
+        if (!$this->json) {
             parent::printFooter($result);
 
             $this->writeNewLine();
@@ -86,24 +85,35 @@ class ResultPrinter extends DefaultResultPrinter
 
             $maxGroupPoints = $this->calculateMaxGroupPoints($groupIndex);
             $scoredGroupPoints = $this->calculateScoredGroupPoints($groupIndex);
+            $manualCheckRequired = $this->groupRequiresManualCheck($groupIndex);
+            $groupJson = [
+                'group' => $groupName,
+                'points' => $scoredGroupPoints,
+                'maxPoints' => $maxGroupPoints,
+                'strategy' => $group['strategy'] ?? Config::getInstance()->getPointsStrategy(),
+                'manualCheck' => $manualCheckRequired,
+                'tests' => [],
+            ];
+
 
             // Print the group header
-            $manualCheckRequired = $this->groupRequiresManualCheck($groupIndex);
-            $pointsText = $scoredGroupPoints . '/' . $maxGroupPoints . ' point' .
-                ($scoredGroupPoints !== 1 ? 's' : '');
+            if (!$this->json) {
+                $pointsText = $scoredGroupPoints . '/' . $maxGroupPoints . ' point' .
+                    ($scoredGroupPoints !== 1 ? 's' : '');
 
-            $color = 'fg-red';
-            if ($scoredGroupPoints === $maxGroupPoints) {
-                $color = 'fg-green';
-            } elseif ($scoredGroupPoints > 0.0) { // partial
-                $color = 'fg-yellow';
-            }
+                $color = 'fg-red';
+                if ($scoredGroupPoints === $maxGroupPoints) {
+                    $color = 'fg-green';
+                } elseif ($scoredGroupPoints > 0.0) { // partial
+                    $color = 'fg-yellow';
+                }
 
-            $this->writeWithColor('bold', '  ' . $groupName . ': ', false);
-            $this->writeWithColor($color, $pointsText, !$manualCheckRequired);
+                $this->writeWithColor('bold', '  ' . $groupName . ': ', false);
+                $this->writeWithColor($color, $pointsText, !$manualCheckRequired);
 
-            if ($manualCheckRequired) {
-                $this->writeWithColor('fg-yellow, bold', ' [manual check required]');
+                if ($manualCheckRequired) {
+                    $this->writeWithColor('fg-yellow, bold', ' [manual check required]');
+                }
             }
 
             // print the tests
@@ -120,39 +130,59 @@ class ResultPrinter extends DefaultResultPrinter
                     $missingExtraTests[] = $groupName . ' > ' . $testName;
                 }
 
-                if ($result['main']['status'] === false) {
-                    $resultText = 'failed';
-                    $resultSymbol = '✗';
-                    $resultColor = 'red';
-                } elseif (
-                    $result['main']['status'] === true &&
-                    (!$this->hasExtraTests || !isset($result['extra']['status']) || $result['extra']['status'] === true)
-                ) {
-                    $resultText = 'ok';
-                    $resultSymbol = '✓';
-                    $resultColor = 'green';
+                if ($this->json) {
+                    $groupJson['tests'][] = [
+                        'name' => $testName,
+                        'points' => $result['main']['status'] === true ? $result['main']['points'] : 0,
+                        'maxPoints' => $result['main']['points'],
+                        'failed' => $result['main']['status'] === false,
+                        'manualCheck' => $result['main']['status'] === true && isset($result['extra']) &&
+                            $result['extra']['status'] === false,
+                    ];
                 } else {
-                    $resultText = 'WARNING: please check manually for static return values and/or logical errors';
-                    $resultSymbol = '?';
-                    $resultColor = 'yellow';
-                }
+                    if ($result['main']['status'] === false) {
+                        $resultText = 'failed';
+                        $resultSymbol = '✗';
+                        $resultColor = 'red';
+                    } elseif (
+                        $result['main']['status'] === true && (
+                            !$this->hasExtraTests ||
+                            !isset($result['extra']['status']) ||
+                            $result['extra']['status'] === true
+                        )
+                    ) {
+                        $resultText = 'ok';
+                        $resultSymbol = '✓';
+                        $resultColor = 'green';
+                    } else {
+                        $resultText = 'WARNING: please check manually for static return values and/or logical errors';
+                        $resultSymbol = '?';
+                        $resultColor = 'yellow';
+                    }
 
-                $this->write('    ');
-                $this->writeWithColor('fg-' . $resultColor . ', bold', $resultSymbol, false);
-                $this->write(' ' . $testName . ': ' . $resultText);
-                $this->writeNewLine();
+                    $this->write('    ');
+                    $this->writeWithColor('fg-' . $resultColor . ', bold', $resultSymbol, false);
+                    $this->write(' ' . $testName . ': ' . $resultText);
+                    $this->writeNewLine();
+                }
+            }
+
+            if ($this->json) {
+                $json['testResults'][] = $groupJson;
             }
         }
 
         // print info
-        $this->writeNewLine();
-        $this->writeWithColor('fg-blue', 'Info: ', false);
-        $this->write('The detailed test and error information is visible above the result summary.');
-        $this->writeNewLine();
+        if (!$this->json) {
+            $this->writeNewLine();
+            $this->writeWithColor('fg-blue', 'Info: ', false);
+            $this->write('The detailed test and error information is visible above the result summary.');
+            $this->writeNewLine();
+        }
 
         // print warnings: extra tests without main tests
         if ($this->hasExtraTests && count($missingMainTests) > 0) {
-            $this->printTestWarnings(
+            $json['warnings'][] = $this->printTestWarnings(
                 'The following extra tests do not belong to a main test and were ignored:',
                 $missingMainTests
             );
@@ -160,7 +190,7 @@ class ResultPrinter extends DefaultResultPrinter
 
         // print warnings: main tests without extra tests
         if ($this->hasExtraTests && count($missingExtraTests) > 0) {
-            $this->printTestWarnings(
+            $json['warnings'][] = $this->printTestWarnings(
                 'The following tests do NOT have extra tests and so can NOT be checked for possible cheating:',
                 $missingExtraTests
             );
@@ -168,7 +198,7 @@ class ResultPrinter extends DefaultResultPrinter
 
         // print warnings: tests without a group
         if (count($this->ungroupedTests) > 0) {
-            $this->printTestWarnings(
+            $json['warnings'][] = $this->printTestWarnings(
                 'The following tests do not belong to a group and were ignored:',
                 $this->ungroupedTests
             );
@@ -176,13 +206,21 @@ class ResultPrinter extends DefaultResultPrinter
 
         // print warnings: groups without a test
         if (count($emptyGroups) > 0) {
-            $this->printTestWarnings(
+            $json['warnings'][] = $this->printTestWarnings(
                 'The following groups do not have any test:',
                 $emptyGroups
             );
         }
 
-        $this->write("\n");
+        if ($this->json) {
+            if (count($json['warnings']) === 0) {
+                unset($json['warnings']);
+            }
+
+            $this->write(json_encode($json, JSON_PRETTY_PRINT));
+        } else {
+            $this->write("\n");
+        }
     }
 
     /**
@@ -328,17 +366,21 @@ class ResultPrinter extends DefaultResultPrinter
     /**
      * Prints a warning for a specific set of tests
      */
-    private function printTestWarnings(string $warning, array $tests)
+    private function printTestWarnings(string $warning, array $tests): string
     {
-        $this->writeNewLine();
-        $this->writeWithColor(
-            'fg-yellow',
-            'WARNING: ' . $warning,
-        );
-
-        foreach ($tests as $test) {
-            $this->write('  - ' . $test);
+        if (!$this->json) {
             $this->writeNewLine();
+            $this->writeWithColor(
+                'fg-yellow',
+                'WARNING: ' . $warning,
+            );
+
+            foreach ($tests as $test) {
+                $this->write('  - ' . $test);
+                $this->writeNewLine();
+            }
         }
+
+        return $warning . "\n  - " . implode("\n  - ", $tests);
     }
 }

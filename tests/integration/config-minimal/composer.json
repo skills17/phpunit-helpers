@@ -12,7 +12,10 @@
         "skills17/phpunit-helpers": "@dev"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "test:dump": "composer test > expected.txt",
+        "test:json": "FORMAT=json phpunit | tail -n +3",
+        "test:json:dump": "composer test:json > expected.json"
     },
     "authors": [
         {
