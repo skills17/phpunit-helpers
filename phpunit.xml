@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+         cacheResultFile="vendor/phpunit/phpunit.cache"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Integration Tests">
+            <file>./tests/integration/IntegrationTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

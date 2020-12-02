@@ -10,6 +10,7 @@
         "post-install-cmd": [
             "php tests/integration/install.php"
         ],
+        "test": "phpunit",
         "lint": "phpcs",
         "lint:fix": "phpcbf"
     },
