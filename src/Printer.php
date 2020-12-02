@@ -5,12 +5,14 @@ namespace Skills17\PHPUnit;
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Framework\Test;
 use PHPUnit\TextUI\DefaultResultPrinter;
+use PHPUnit\Util\Test as UtilTest;
 use Skills17\PHPUnit\Config;
 
-class Trade17Printer extends DefaultResultPrinter
+class ResultPrinter extends DefaultResultPrinter
 {
     private $results = [];
-    private $criteria;
+    private $ungroupedTests = [];
+    private $groups;
     private $hasExtraTests = false;
     private $json = false;
 
@@ -24,12 +26,13 @@ class Trade17Printer extends DefaultResultPrinter
     ) {
         parent::__construct($out, $verbose, $colors, $debug, $numberOfColumns, $reverse);
 
-        $config = Config::get();
-        $this->criteria = $config['criteria'] ?? [];
-        $this->criteria['unknown'] = ['points' => 0];
-        $this->json = $config['format'] === 'json';
+        $this->groups = Config::getInstance()->getGroups();
+        $this->json = Config::getInstance()->getFormat() === 'json';
     }
 
+    /**
+     * Print the result.
+     */
     public function printResult(TestResult $result): void
     {
         if ($this->json) {
@@ -39,6 +42,9 @@ class Trade17Printer extends DefaultResultPrinter
         }
     }
 
+    /**
+     * Show progress if format is not json.
+     */
     protected function writeProgress(string $progress): void
     {
         if (!$this->json) {
@@ -46,17 +52,21 @@ class Trade17Printer extends DefaultResultPrinter
         }
     }
 
+    /**
+     * Print the footer.
+     */
     protected function printFooter(TestResult $result): void
     {
         $missingExtraTests = [];
         $missingMainTests = [];
+        $emptyGroups = [];
 
         if ($this->json) {
             $this->write("{\n");
         } else {
             parent::printFooter($result);
 
-            $this->write("\n\n");
+            $this->writeNewLine();
             $this->writeWithColor(
                 'fg-black, bg-green',
                 '------------       RESULT       ------------'
@@ -64,169 +74,271 @@ class Trade17Printer extends DefaultResultPrinter
             $this->write("\nSummary:\n");
         }
 
-        // Attribute a status to each test and print its result
-        foreach ($this->results as $key => $tests) { // $key: ID of the group of tests
-            $manualCheckRequired = false;
-            $points = 0;
-            $maxPoints = 0;
+        // print groups
+        foreach ($this->groups as $groupIndex => $group) {
+            $groupName = $group['displayName'] ?? $group['match'];
 
-            foreach ($tests as $method => $result) {
-                $testPoints = $this->criteria[$key]['pointOverrides'][$method] ?? 1;
+            // check if no tests were recorded for this group
+            if (!isset($this->results[$groupIndex])) {
+                $emptyGroups[] = $groupName;
+                continue;
+            }
 
-                $maxPoints += $testPoints;
+            $maxGroupPoints = $this->calculateMaxGroupPoints($groupIndex);
+            $scoredGroupPoints = $this->calculateScoredGroupPoints($groupIndex);
 
+            // Print the group header
+            $manualCheckRequired = $this->groupRequiresManualCheck($groupIndex);
+            $pointsText = $scoredGroupPoints . '/' . $maxGroupPoints . ' point' .
+                ($scoredGroupPoints !== 1 ? 's' : '');
+
+            $color = 'fg-red';
+            if ($scoredGroupPoints === $maxGroupPoints) {
+                $color = 'fg-green';
+            } elseif ($scoredGroupPoints > 0.0) { // partial
+                $color = 'fg-yellow';
+            }
+
+            $this->writeWithColor('bold', '  ' . $groupName . ': ', false);
+            $this->writeWithColor($color, $pointsText, !$manualCheckRequired);
+
+            if ($manualCheckRequired) {
+                $this->writeWithColor('fg-yellow, bold', ' [manual check required]');
+            }
+
+            // print the tests
+            foreach ($this->results[$groupIndex] as $testName => $result) {
                 // check if an extra tests was executed without a main test
                 if (!isset($result['main'])) {
                     $manualCheckRequired = true;
-                    $missingMainTests[] = $method;
+                    $missingMainTests[] = $groupName . ' > ' . $testName;
                     continue;
                 }
 
                 // check if a main test was executed without an extra test
                 if (!isset($result['extra']) && $this->hasExtraTests) {
-                    $missingExtraTests[] = $method;
+                    $missingExtraTests[] = $groupName . ' > ' . $testName;
                 }
 
-                // check if extra test failed while main test succeeded
-                if ($result['main'] === true && isset($result['extra']) && $result['extra'] === false) {
-                    $manualCheckRequired = true;
-                    continue;
+                if ($result['main']['status'] === false) {
+                    $resultText = 'failed';
+                    $resultSymbol = '✗';
+                    $resultColor = 'red';
+                } elseif (
+                    $result['main']['status'] === true &&
+                    (!$this->hasExtraTests || !isset($result['extra']['status']) || $result['extra']['status'] === true)
+                ) {
+                    $resultText = 'ok';
+                    $resultSymbol = '✓';
+                    $resultColor = 'green';
+                } else {
+                    $resultText = 'WARNING: please check manually for static return values and/or logical errors';
+                    $resultSymbol = '?';
+                    $resultColor = 'yellow';
                 }
 
-                // Add points when the test passes
-                if ($result['main'] !== false) {
-                    $points += $testPoints;
-                }
-            }
-
-            // Print the group header
-            if ($this->json) {
-                $this->write('    "' . $key . '": ');
-                $this->write(!$manualCheckRequired ? $points : '"manual_check"');
-            } else {
-                $pointsText = "$points/$maxPoints point" . ($points !== 1 ? 's' : '');
-
-                $color = 'fg-red';
-                if ($points === $maxPoints) {
-                    $color = 'fg-green';
-                } elseif ($points > 0.0) { // partial
-                    $color = 'fg-blue';
-                }
-
-                if ($manualCheckRequired) {
-                    $color = 'fg-yellow, bold';
-                    $pointsText = 'manual check required';
-                }
-
-                $testName = $this->criteria[$key]['displayName'] ?? $key;
-                $this->writeWithColor('bold', '  ' . $testName . ': ', false);
-
-                $this->writeWithColor($color, $pointsText);
-            }
-
-            // Print individual tests
-            if (!$this->json) {
-                foreach ($tests as $method => $result) {
-                    $testPoints = $this->criteria[$key]['pointOverrides'][$method] ?? 1;
-
-                    if ($result['main'] === false) {
-                        $resultText = 'failed';
-                        $resultSymbol = '✗';
-                        $resultColor = 'red';
-                    } elseif (
-                        $result['main'] === true &&
-                        (!$this->hasExtraTests || !isset($result['extra']) || $result['extra'] === true)
-                    ) {
-                        $resultText = 'ok';
-                        $resultSymbol = '✓';
-                        $resultColor = 'green';
-                    } else {
-                        $resultText = 'WARNING: please check manually for static return values and/or logical errors';
-                        $resultSymbol = '?';
-                        $resultColor = 'yellow';
-                    }
-
-                    $this->write('    ');
-                    $this->writeWithColor("fg-$resultColor, bold", $resultSymbol, false);
-                    $this->write(str_pad(" [$testPoints] ", 5) . "$method: $resultText\n");
-                }
-            }
-
-            if ($this->json) {
-                if (next($this->results) !== false) {
-                    $this->write(',');
-                }
-
-                $this->write("\n");
+                $this->write('    ');
+                $this->writeWithColor('fg-' . $resultColor . ', bold', $resultSymbol, false);
+                $this->write(' ' . $testName . ': ' . $resultText);
+                $this->writeNewLine();
             }
         }
 
-        if ($this->json) {
-            $this->write('}');
-        }
+        // print info
+        $this->writeNewLine();
+        $this->writeWithColor('fg-blue', 'Info: ', false);
+        $this->write('The detailed test and error information is visible above the result summary.');
+        $this->writeNewLine();
 
+        // print warnings: extra tests without main tests
         if ($this->hasExtraTests && count($missingMainTests) > 0) {
-            $this->write("\n\n\n");
-            $this->writeWithColor(
-                'fg-yellow',
-                'WARNING: the following extra tests do not belong to a main test and were ignored:'
+            $this->printTestWarnings(
+                'The following extra tests do not belong to a main test and were ignored:',
+                $missingMainTests
             );
-
-            foreach ($missingMainTests as $missingMainTest) {
-                $this->write('  - ' . $missingMainTest . "\n");
-            }
         }
 
+        // print warnings: main tests without extra tests
         if ($this->hasExtraTests && count($missingExtraTests) > 0) {
-            $this->write("\n\n\n");
-            $this->writeWithColor(
-                'fg-yellow',
-                'WARNING: the following tests do NOT have extra tests and so can NOT be checked for possible cheating:'
+            $this->printTestWarnings(
+                'The following tests do NOT have extra tests and so can NOT be checked for possible cheating:',
+                $missingExtraTests
             );
+        }
 
-            foreach ($missingExtraTests as $missingExtraTest) {
-                $this->write('  - ' . $missingExtraTest . "\n");
-            }
+        // print warnings: tests without a group
+        if (count($this->ungroupedTests) > 0) {
+            $this->printTestWarnings(
+                'The following tests do not belong to a group and were ignored:',
+                $this->ungroupedTests
+            );
+        }
+
+        // print warnings: groups without a test
+        if (count($emptyGroups) > 0) {
+            $this->printTestWarnings(
+                'The following groups do not have any test:',
+                $emptyGroups
+            );
         }
 
         $this->write("\n");
     }
 
+    /**
+     * Save the test results together with some additional information.
+     */
     public function endTest(Test $test, float $time): void
     {
-        $info = \PHPUnit\Util\Test::describe($test);
-        $isExtra = strpos($info[0], '\\Extra\\') !== false;
-        $category = $this->getCategory($info[1]);
+        [$className, $testName] = UtilTest::describe($test);
+        $isExtra = strpos($className, '\\Extra\\') !== false;
+        $testInfo = $this->getTestInfo($testName);
 
-        if ($isExtra) {
-            $this->hasExtraTests = true;
+        if ($testInfo === null) {
+            $this->ungroupedTests[] = $className . '::' . $testName;
+        } else {
+            if ($isExtra) {
+                $this->hasExtraTests = true;
+            }
+
+            if (!isset($this->results[$testInfo['groupIndex']])) {
+                $this->results[$testInfo['groupIndex']] = [];
+            }
+
+            if (!isset($this->results[$testInfo['groupIndex']][$testName])) {
+                $this->results[$testInfo['groupIndex']][$testName] = [];
+            }
+
+            $this->results[$testInfo['groupIndex']][$testName][$isExtra ? 'extra' : 'main'] = array_merge($testInfo, [
+                'status' => !$this->lastTestFailed,
+            ]);
         }
-
-        if (!isset($this->results[$category])) {
-            $this->results[$category] = [];
-        }
-
-        if (!isset($this->results[$category][$info[1]])) {
-            $this->results[$category][$info[1]] = [];
-        }
-
-        $this->results[$category][$info[1]][$isExtra ? 'extra' : 'main'] = !$this->lastTestFailed;
 
         parent::endTest($test, $time);
     }
 
-    private function getCategory(string $name): string
+    /**
+     * Calculate the points scored within a group
+     */
+    private function calculateScoredGroupPoints(int $groupIndex): int
     {
-        if (substr($name, 0, 4) !== 'test') {
-            return 'unknown';
-        }
+        $group = $this->groups[$groupIndex];
+        $strategy = $group['strategy'] ?? Config::getInstance()->getPointsStrategy();
+        $points = $strategy === 'deduct' ? $this->calculateMaxGroupPoints($groupIndex) : 0;
 
-        foreach ($this->criteria as $category => $criterion) {
-            if (substr($name, 4, strlen($category)) === $category) {
-                return $category;
+        foreach ($this->results[$groupIndex] as $result) {
+            $testSuccessful = false;
+
+            // check if the test was successful or not
+            if (isset($result['main'])) {
+                $testSuccessful = $result['main']['status'];
+            }
+
+            // add or deduct points based on the strategy
+            if ($testSuccessful && $strategy === 'add') {
+                $points += $result['main']['points'];
+            } elseif (!$testSuccessful) {
+                if ($strategy === 'deduct') {
+                    $points -= $result['main']['points'];
+                }
+
+                if ($result['main']['required']) {
+                    return 0;
+                }
             }
         }
 
-        return 'unknown';
+        return max($points, 0);
+    }
+
+    /**
+     * Calculate the maximum possible points for a group.
+     */
+    private function calculateMaxGroupPoints(int $groupIndex): int
+    {
+        $group = $this->groups[$groupIndex];
+        $strategy = $group['strategy'] ?? Config::getInstance()->getPointsStrategy();
+
+        // respect the optional maxPoints value for the deduct strategy
+        if ($strategy === 'deduct' && isset($group['maxPoints'])) {
+            return $group['maxPoints'];
+        }
+
+        // add all possible points for the tests in the specified group
+        return array_reduce($this->results[$groupIndex], function ($carry, $item) {
+            if (isset($item['main'])) {
+                return $carry + $item['main']['points'];
+            }
+
+            return $carry + $item['extra']['points'];
+        }, 0);
+    }
+
+    /**
+     * Check if a group requires a manual check
+     */
+    private function groupRequiresManualCheck(int $groupIndex): bool
+    {
+        foreach ($this->results[$groupIndex] as $result) {
+            // check if a manual check is required
+            if (isset($result['main']) && isset($result['extra'])) {
+                if ($result['main'] === true && $result['extra'] === false) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the group index of a test
+     */
+    private function getTestInfo(string $fullName): ?array
+    {
+        $name = substr($fullName, 0, 4) === 'test' ? substr($fullName, 4) : $fullName;
+
+        // search the group in which the test is in
+        foreach ($this->groups as $groupIndex => $group) {
+            if (preg_match('/^' . $group['match'] . '$/', $name)) {
+                $points = $group['defaultPoints'] ?? Config::getInstance()->getDefaultPoints();
+                $required = false;
+
+                // search for a specific test config
+                foreach (($group['tests'] ?? []) as $test) {
+                    if (preg_match('/^' . $test['match'] . '$/', $name)) {
+                        $points = $test['points'] ?? $points;
+                        $required = $test['required'] ?? $required;
+                        break;
+                    }
+                }
+
+                // return default values for no specific matches
+                return [
+                    'groupIndex' => $groupIndex,
+                    'points' => $points,
+                    'required' => false,
+                ];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Prints a warning for a specific set of tests
+     */
+    private function printTestWarnings(string $warning, array $tests)
+    {
+        $this->writeNewLine();
+        $this->writeWithColor(
+            'fg-yellow',
+            'WARNING: ' . $warning,
+        );
+
+        foreach ($tests as $test) {
+            $this->write('  - ' . $test);
+            $this->writeNewLine();
+        }
     }
 }

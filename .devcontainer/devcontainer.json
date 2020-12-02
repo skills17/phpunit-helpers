@@ -11,7 +11,8 @@
     "[php]": {
       "editor.defaultFormatter": "wongjn.php-sniffer",
       "editor.formatOnSave": true,
-      "editor.rulers": [120]
+      "editor.rulers": [120],
+      "editor.tabSize": 4
     },
     "php.suggest.basic": false,
     "phpSniffer.autoDetect": true

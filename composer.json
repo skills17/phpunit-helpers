@@ -8,7 +8,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "composer --working-dir=tests/integration/minimal install"
+            "php tests/integration/install.php"
         ],
         "lint": "phpcs",
         "lint:fix": "phpcbf"

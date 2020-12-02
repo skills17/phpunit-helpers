@@ -9,11 +9,10 @@
         }
     ],
     "require": {
-        "phpunit/phpunit": "^9",
         "skills17/phpunit-helpers": "@dev"
     },
     "scripts": {
-        "test": "phpunit tests/"
+        "test": "phpunit"
     },
     "authors": [
         {
