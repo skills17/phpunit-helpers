@@ -1,0 +1,56 @@
+PHPUnit 9.4.4 by Sebastian Bergmann and contributors.
+
+...F........F..FFF                                                18 / 18 (100%)
+
+Time: 00:00.136, Memory: 6.00 MB
+
+There were 5 failures:
+
+1) Skills17\PHPUnit\Test\Integration\ExtraTests\Extra\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests/tests/Extra/SomeTest.php:26
+
+2) Skills17\PHPUnit\Test\Integration\ExtraTests\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests/tests/SomeTest.php:26
+
+3) Skills17\PHPUnit\Test\Integration\ExtraTests\SomeTest::testDFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests/tests/SomeTest.php:41
+
+4) Skills17\PHPUnit\Test\Integration\ExtraTests\SomeTest::testEFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests/tests/SomeTest.php:46
+
+5) Skills17\PHPUnit\Test\Integration\ExtraTests\SomeTest::testEBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests/tests/SomeTest.php:51
+
+FAILURES!
+Tests: 18, Assertions: 18, Failures: 5.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 1/1 point
+    ✓ testAFoo: ok
+  B.+: 2/3 points
+    ✓ testBFoo: ok
+    ✓ testBBar: ok
+    ✗ testBBaz: failed
+  C.+: 2/2 points
+    ✓ testCFoo: ok
+    ✓ testCBar: ok
+  D.+: 0/1 points
+    ✗ testDFoo: failed
+  E.+: 0/2 points
+    ✗ testEFoo: failed
+    ✗ testEBar: failed
+
+Info: The detailed test and error information is visible above the result summary.
+

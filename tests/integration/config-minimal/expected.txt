@@ -6,22 +6,22 @@ Time: 00:00.110, Memory: 6.00 MB
 
 There were 4 failures:
 
-1) Skills17\PHPUnit\Test\Integration\Minimal\MinimalTest::testBBaz
+1) Skills17\PHPUnit\Test\Integration\ConfigMinimal\MinimalTest::testBBaz
 Failed asserting that false is true.
 
 /workspaces/phpunit-helpers/tests/integration/config-minimal/tests/MinimalTest.php:26
 
-2) Skills17\PHPUnit\Test\Integration\Minimal\MinimalTest::testDFoo
+2) Skills17\PHPUnit\Test\Integration\ConfigMinimal\MinimalTest::testDFoo
 Failed asserting that false is true.
 
 /workspaces/phpunit-helpers/tests/integration/config-minimal/tests/MinimalTest.php:41
 
-3) Skills17\PHPUnit\Test\Integration\Minimal\MinimalTest::testEFoo
+3) Skills17\PHPUnit\Test\Integration\ConfigMinimal\MinimalTest::testEFoo
 Failed asserting that false is true.
 
 /workspaces/phpunit-helpers/tests/integration/config-minimal/tests/MinimalTest.php:46
 
-4) Skills17\PHPUnit\Test\Integration\Minimal\MinimalTest::testEBar
+4) Skills17\PHPUnit\Test\Integration\ConfigMinimal\MinimalTest::testEBar
 Failed asserting that false is true.
 
 /workspaces/phpunit-helpers/tests/integration/config-minimal/tests/MinimalTest.php:51

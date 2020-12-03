@@ -1,0 +1,64 @@
+PHPUnit 9.4.4 by Sebastian Bergmann and contributors.
+
+.F...F.......F..F.F                                               19 / 19 (100%)
+
+Time: 00:00.172, Memory: 6.00 MB
+
+There were 5 failures:
+
+1) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\AnotherTest::testFBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests-missing/tests/AnotherTest.php:16
+
+2) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\Extra\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests-missing/tests/Extra/SomeTest.php:26
+
+3) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests-missing/tests/SomeTest.php:26
+
+4) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\SomeTest::testDFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests-missing/tests/SomeTest.php:41
+
+5) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\SomeTest::testEBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/extra-tests-missing/tests/SomeTest.php:51
+
+FAILURES!
+Tests: 19, Assertions: 19, Failures: 5.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 1/1 point
+    ✓ testAFoo: ok
+  B.+: 2/3 points
+    ✓ testBFoo: ok
+    ✓ testBBar: ok
+    ✗ testBBaz: failed
+  C.+: 2/2 points
+    ✓ testCFoo: ok
+    ✓ testCBar: ok
+  D.+: 0/1 points
+    ✗ testDFoo: failed
+  E.+: 1/2 point
+    ✗ testEBar: failed
+    ✓ testEFoo: ok
+  F.+: 1/2 point
+    ✓ testFFoo: ok
+    ✗ testFBar: failed
+
+Info: The detailed test and error information is visible above the result summary.
+
+WARNING: The following tests do NOT have extra tests and so can NOT be checked for possible cheating:
+  - E.+ > testEFoo
+  - F.+ > testFFoo
+  - F.+ > testFBar
+

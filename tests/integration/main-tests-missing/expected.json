@@ -1,0 +1,116 @@
+{
+    "testResults": [
+        {
+            "group": "A.+",
+            "points": 1,
+            "maxPoints": 1,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testAFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "B.+",
+            "points": 2,
+            "maxPoints": 3,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testBFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testBBar",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testBBaz",
+                    "points": 0,
+                    "maxPoints": 1,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "C.+",
+            "points": 1,
+            "maxPoints": 1,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testCFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "D.+",
+            "points": 0,
+            "maxPoints": 1,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testDFoo",
+                    "points": 0,
+                    "maxPoints": 1,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "E.+",
+            "points": 1,
+            "maxPoints": 2,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testEFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testEBar",
+                    "points": 0,
+                    "maxPoints": 1,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "F.+",
+            "points": 0,
+            "maxPoints": 0,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": []
+        }
+    ],
+    "warnings": [
+        "The following extra tests do not belong to a main test and were ignored:\n  - C.+ > testCBar\n  - F.+ > testFFoo\n  - F.+ > testFBar"
+    ]
+}

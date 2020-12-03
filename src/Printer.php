@@ -155,14 +155,20 @@ class ResultPrinter extends DefaultResultPrinter
                         $resultSymbol = '✓';
                         $resultColor = 'green';
                     } else {
-                        $resultText = 'WARNING: please check manually for static return values and/or logical errors';
+                        $resultText = 'please check manually for static return values and/or logical errors';
                         $resultSymbol = '?';
                         $resultColor = 'yellow';
                     }
 
                     $this->write('    ');
                     $this->writeWithColor('fg-' . $resultColor . ', bold', $resultSymbol, false);
-                    $this->write(' ' . $testName . ': ' . $resultText);
+                    $this->write(' ' . $testName . ': ');
+
+                    if ($resultColor === 'yellow') {
+                        $this->writeWithColor('fg-yellow', 'WARNING: ', false);
+                    }
+
+                    $this->write($resultText);
                     $this->writeNewLine();
                 }
             }
@@ -308,7 +314,8 @@ class ResultPrinter extends DefaultResultPrinter
                 return $carry + $item['main']['points'];
             }
 
-            return $carry + $item['extra']['points'];
+            // add 0 points for extra tests without a main test
+            return $carry + 0;
         }, 0);
     }
 
@@ -320,7 +327,7 @@ class ResultPrinter extends DefaultResultPrinter
         foreach ($this->results[$groupIndex] as $result) {
             // check if a manual check is required
             if (isset($result['main']) && isset($result['extra'])) {
-                if ($result['main'] === true && $result['extra'] === false) {
+                if ($result['main']['status'] === true && $result['extra']['status'] === false) {
                     return true;
                 }
             }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Skills17\PHPUnit\Test\Integration\ConfigMinimal;
+namespace Skills17\PHPUnit\Test\Integration\ExtraTestsMissing;
 
 use Skills17\PHPUnit\BaseTest;
 
-class MinimalTest extends BaseTest
+class SomeTest extends BaseTest
 {
     public function testAFoo()
     {
@@ -43,7 +43,7 @@ class MinimalTest extends BaseTest
 
     public function testEFoo()
     {
-        $this->assertTrue(false);
+        $this->assertTrue(true);
     }
 
     public function testEBar()
