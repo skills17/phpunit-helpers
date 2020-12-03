@@ -31,6 +31,9 @@ class SomeTest extends BaseTest
         $this->assertTrue(true);
     }
 
+    /**
+     * This test does not have a main test and should trigger a warning.
+     */
     public function testCBar()
     {
         $this->assertTrue(true);

@@ -36,11 +36,17 @@ class SomeTest extends BaseTest
         $this->assertTrue(true);
     }
 
+    /**
+     * The extra test for this one fails and should trigger a warning.
+     */
     public function testDFoo()
     {
         $this->assertTrue(true);
     }
 
+    /**
+     * The extra test for this one fails and should trigger a warning.
+     */
     public function testEFoo()
     {
         $this->assertTrue(true);

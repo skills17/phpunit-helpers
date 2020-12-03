@@ -7,7 +7,7 @@
          processIsolation="false"
          stopOnFailure="false"
          printerClass="Skills17\PHPUnit\ResultPrinter"
-         printerFile="vendor/skills17/phpunit-helpers/src/Printer.php"
+         printerFile="../../../src/Printer.php"
          colors="true"
 >
     <testsuites>

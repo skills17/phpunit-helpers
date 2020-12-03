@@ -1,6 +1,6 @@
 <?php
 
-namespace Skills17\PHPUnit\Test\Integration\ExtraTestsMissing;
+namespace Skills17\PHPUnit\Test\Integration\ComposerDependency;
 
 use Skills17\PHPUnit\BaseTest;
 
@@ -41,12 +41,9 @@ class SomeTest extends BaseTest
         $this->assertTrue(false);
     }
 
-    /**
-     * This test does not have an extra test and should trigger a warning.
-     */
     public function testEFoo()
     {
-        $this->assertTrue(true);
+        $this->assertTrue(false);
     }
 
     public function testEBar()

@@ -43,6 +43,14 @@ class Config
         $classLoader = new ReflectionClass(\Composer\Autoload\ClassLoader::class);
         $projectRoot = dirname($classLoader->getFileName(), 3);
 
+        // if the config.json does not exist in the assumed project directory, check if it exists in the current working
+        // directory and use it instead. this is mainly used during tests.
+        if (!file_exists($projectRoot . DIRECTORY_SEPARATOR . 'config.json')) {
+            if (file_exists(getcwd() . DIRECTORY_SEPARATOR . 'config.json')) {
+                return getcwd() . '/';
+            }
+        }
+
         return $projectRoot . '/';
     }
 

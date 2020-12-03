@@ -1,4 +1,4 @@
-PHPUnit 9.4.4 by Sebastian Bergmann and contributors.
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
 
 ...F........F..FFF                                                18 / 18 (100%)
 

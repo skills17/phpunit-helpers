@@ -1,4 +1,4 @@
-PHPUnit 9.4.4 by Sebastian Bergmann and contributors.
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
 
 .F...F........F.F.F                                               19 / 19 (100%)
 
@@ -9,7 +9,7 @@ There were 5 failures:
 1) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\Extra\AnotherTest::testFBar
 Failed asserting that false is true.
 
-/workspaces/phpunit-helpers/tests/integration/main-tests-missing/tests/Extra/AnotherTest.php:16
+/workspaces/phpunit-helpers/tests/integration/main-tests-missing/tests/Extra/AnotherTest.php:19
 
 2) Skills17\PHPUnit\Test\Integration\ExtraTestsMissing\Extra\SomeTest::testBBaz
 Failed asserting that false is true.
