@@ -1,0 +1,21 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.091, Memory: 6.00 MB
+
+OK (2 tests, 2 assertions)
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 1/1 point
+    ✓ testAFoo: ok
+  C.+: 1/1 point
+    ✓ testCFoo: ok
+
+Info: The detailed test and error information is visible above the result summary.
+
+WARNING: The following groups do not have any test:
+  - B.+
+

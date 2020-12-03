@@ -1,5 +1,5 @@
 {
-    "name": "skills17/phpunit-helpers-integration-config-minimal",
+    "name": "skills17/phpunit-helpers-integration-ungrouped-tests",
     "description": "Integration tests for skills17/phpunit-helpers",
     "license": "MIT",
     "scripts": {

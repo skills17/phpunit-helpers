@@ -1,0 +1,23 @@
+{
+    "testResults": [
+        {
+            "group": "A.+",
+            "points": 1,
+            "maxPoints": 1,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testAFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                }
+            ]
+        }
+    ],
+    "warnings": [
+        "The following tests do not belong to a group and were ignored:\n  - Skills17\\PHPUnit\\Test\\Integration\\UngroupedTests\\SomeTest::testBFoo\n  - Skills17\\PHPUnit\\Test\\Integration\\UngroupedTests\\SomeTest::testBBar"
+    ]
+}
