@@ -99,7 +99,7 @@ class ResultPrinter extends DefaultResultPrinter
             // Print the group header
             if (!$this->json) {
                 $pointsText = $scoredGroupPoints . '/' . $maxGroupPoints . ' point' .
-                    ($scoredGroupPoints !== 1 ? 's' : '');
+                    ($maxGroupPoints !== 1.0 ? 's' : '');
 
                 $color = 'fg-red';
                 if ($scoredGroupPoints === $maxGroupPoints) {

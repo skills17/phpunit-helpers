@@ -46,7 +46,7 @@ Summary:
   C.+: 2/2 points
     ✓ testCFoo: ok
     ✓ testCBar: ok
-  D.+: 0/1 points
+  D.+: 0/1 point
     ✗ testDFoo: failed
   E.+: 0/2 points
     ✗ testEFoo: failed

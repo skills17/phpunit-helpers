@@ -45,9 +45,9 @@ Summary:
     ✗ testBBaz: failed
   C.+: 1/1 point
     ✓ testCFoo: ok
-  D.+: 0/1 points
+  D.+: 0/1 point
     ✗ testDFoo: failed
-  E.+: 1/2 point
+  E.+: 1/2 points
     ✓ testEFoo: ok
     ✗ testEBar: failed
   F.+: 0/0 points
