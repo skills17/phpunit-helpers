@@ -264,11 +264,11 @@ class ResultPrinter extends DefaultResultPrinter
     /**
      * Calculate the points scored within a group
      */
-    private function calculateScoredGroupPoints(int $groupIndex): int
+    private function calculateScoredGroupPoints(int $groupIndex): float
     {
         $group = $this->groups[$groupIndex];
         $strategy = $group['strategy'] ?? Config::getInstance()->getPointsStrategy();
-        $points = $strategy === 'deduct' ? $this->calculateMaxGroupPoints($groupIndex) : 0;
+        $points = $strategy === 'deduct' ? (float) $this->calculateMaxGroupPoints($groupIndex) : 0.0;
 
         foreach ($this->results[$groupIndex] as $result) {
             $testSuccessful = false;
@@ -298,7 +298,7 @@ class ResultPrinter extends DefaultResultPrinter
     /**
      * Calculate the maximum possible points for a group.
      */
-    private function calculateMaxGroupPoints(int $groupIndex): int
+    private function calculateMaxGroupPoints(int $groupIndex): float
     {
         $group = $this->groups[$groupIndex];
         $strategy = $group['strategy'] ?? Config::getInstance()->getPointsStrategy();
@@ -316,7 +316,7 @@ class ResultPrinter extends DefaultResultPrinter
 
             // add 0 points for extra tests without a main test
             return $carry + 0;
-        }, 0);
+        }, 0.0);
     }
 
     /**
