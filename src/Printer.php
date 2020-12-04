@@ -362,7 +362,7 @@ class ResultPrinter extends DefaultResultPrinter
                 return [
                     'groupIndex' => $groupIndex,
                     'points' => $points,
-                    'required' => false,
+                    'required' => $required,
                 ];
             }
         }

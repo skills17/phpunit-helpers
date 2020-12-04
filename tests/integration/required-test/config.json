@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "match": "A.+",
+      "tests": [
+        {
+          "match": "ARequired",
+          "required": true
+        }
+      ]
+    },
+    {
+      "match": "B.+",
+      "strategy": "deduct",
+      "maxPoints": 2,
+      "tests": [
+        {
+          "match": "BRequired",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

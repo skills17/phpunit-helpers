@@ -1,0 +1,40 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+.FF..F                                                              6 / 6 (100%)
+
+Time: 00:00.033, Memory: 6.00 MB
+
+There were 3 failures:
+
+1) Skills17\PHPUnit\Test\Integration\RequiredTest\SomeTest::testABar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/required-test/tests/SomeTest.php:16
+
+2) Skills17\PHPUnit\Test\Integration\RequiredTest\SomeTest::testARequired
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/required-test/tests/SomeTest.php:24
+
+3) Skills17\PHPUnit\Test\Integration\RequiredTest\SomeTest::testBRequired
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/required-test/tests/SomeTest.php:42
+
+FAILURES!
+Tests: 6, Assertions: 6, Failures: 3.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 0/3 points
+    ✓ testAFoo: ok
+    ✗ testABar: failed
+    ✗ testARequired: failed
+  B.+: 0/2 points
+    ✓ testBFoo: ok
+    ✓ testBBar: ok
+    ✗ testBRequired: failed
+
+Info: The detailed test and error information is visible above the result summary.
+
