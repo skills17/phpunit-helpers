@@ -12,6 +12,7 @@
                     "points": 3,
                     "maxPoints": 3,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -19,6 +20,7 @@
                     "points": 3,
                     "maxPoints": 3,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -26,6 +28,7 @@
                     "points": 0,
                     "maxPoints": 3,
                     "failed": true,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -42,6 +45,7 @@
                     "points": 0.5,
                     "maxPoints": 0.5,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -49,6 +53,7 @@
                     "points": 0.5,
                     "maxPoints": 0.5,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -56,6 +61,7 @@
                     "points": 0,
                     "maxPoints": 0.5,
                     "failed": true,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -72,6 +78,7 @@
                     "points": 3,
                     "maxPoints": 3,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -79,6 +86,7 @@
                     "points": 2,
                     "maxPoints": 2,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -86,6 +94,7 @@
                     "points": 0,
                     "maxPoints": 3,
                     "failed": true,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -102,6 +111,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -109,6 +119,7 @@
                     "points": 2,
                     "maxPoints": 2,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -116,6 +127,7 @@
                     "points": 0,
                     "maxPoints": 1,
                     "failed": true,
+                    "required": false,
                     "manualCheck": false
                 }
             ]

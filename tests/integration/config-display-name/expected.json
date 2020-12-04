@@ -12,6 +12,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -28,6 +29,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -44,6 +46,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 }
             ]

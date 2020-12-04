@@ -12,6 +12,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -28,6 +29,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -35,6 +37,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -42,6 +45,7 @@
                     "points": 0,
                     "maxPoints": 1,
                     "failed": true,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -58,6 +62,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 },
                 {
@@ -65,6 +70,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
@@ -81,6 +87,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": true
                 }
             ]
@@ -97,6 +104,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": true
                 },
                 {
@@ -104,6 +112,7 @@
                     "points": 1,
                     "maxPoints": 1,
                     "failed": false,
+                    "required": false,
                     "manualCheck": false
                 }
             ]
