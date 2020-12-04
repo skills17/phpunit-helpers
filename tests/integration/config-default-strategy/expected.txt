@@ -1,0 +1,35 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+..F..F                                                              6 / 6 (100%)
+
+Time: 00:00.085, Memory: 6.00 MB
+
+There were 2 failures:
+
+1) Skills17\PHPUnit\Test\Integration\DefaultStrategy\SomeTest::testABaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/config-default-strategy/tests/SomeTest.php:25
+
+2) Skills17\PHPUnit\Test\Integration\DefaultStrategy\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/config-default-strategy/tests/SomeTest.php:44
+
+FAILURES!
+Tests: 6, Assertions: 6, Failures: 2.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 1/2 points
+    ✓ testAFoo: ok
+    ✓ testABar: ok
+    ✗ testABaz: failed
+  B.+: 2/3 points
+    ✓ testBFoo: ok
+    ✓ testBBar: ok
+    ✗ testBBaz: failed
+
+Info: The detailed test and error information is visible above the result summary.
+

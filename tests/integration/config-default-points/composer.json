@@ -1,0 +1,17 @@
+{
+    "name": "skills17/phpunit-helpers-integration-config-default-points",
+    "description": "Integration tests for skills17/phpunit-helpers",
+    "license": "MIT",
+    "scripts": {
+        "test": "../../../vendor/bin/phpunit",
+        "test:dump": "composer test > expected.txt",
+        "test:json": "FORMAT=json ../../../vendor/bin/phpunit | tail -n +3",
+        "test:json:dump": "composer test:json > expected.json"
+    },
+    "authors": [
+        {
+            "name": "Cyril Wanner",
+            "email": "info@cyr.li"
+        }
+    ]
+}

@@ -1,0 +1,124 @@
+{
+    "testResults": [
+        {
+            "group": "A.+",
+            "points": 6,
+            "maxPoints": 9,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testAFoo",
+                    "points": 3,
+                    "maxPoints": 3,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testABar",
+                    "points": 3,
+                    "maxPoints": 3,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testABaz",
+                    "points": 0,
+                    "maxPoints": 3,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "B.+",
+            "points": 1,
+            "maxPoints": 1.5,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testBFoo",
+                    "points": 0.5,
+                    "maxPoints": 0.5,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testBBar",
+                    "points": 0.5,
+                    "maxPoints": 0.5,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testBBaz",
+                    "points": 0,
+                    "maxPoints": 0.5,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "C.+",
+            "points": 5,
+            "maxPoints": 8,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testCFoo",
+                    "points": 3,
+                    "maxPoints": 3,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testCLessPoints",
+                    "points": 2,
+                    "maxPoints": 2,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testCBaz",
+                    "points": 0,
+                    "maxPoints": 3,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "D.+",
+            "points": 3,
+            "maxPoints": 4,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testDFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDMorePoints",
+                    "points": 2,
+                    "maxPoints": 2,
+                    "failed": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDBaz",
+                    "points": 0,
+                    "maxPoints": 1,
+                    "failed": true,
+                    "manualCheck": false
+                }
+            ]
+        }
+    ]
+}

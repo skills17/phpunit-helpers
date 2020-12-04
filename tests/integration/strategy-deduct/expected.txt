@@ -1,0 +1,81 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+.F..F.FFF.F..FF...                                                18 / 18 (100%)
+
+Time: 00:00.145, Memory: 6.00 MB
+
+There were 8 failures:
+
+1) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testABar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:20
+
+2) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testBBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:39
+
+3) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testCFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:53
+
+4) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testCBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:58
+
+5) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testCBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:63
+
+6) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testDBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:77
+
+7) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testEMorePoints
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:96
+
+8) Skills17\PHPUnit\Test\Integration\StrategyDeduct\SomeTest::testEBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/strategy-deduct/tests/SomeTest.php:101
+
+FAILURES!
+Tests: 18, Assertions: 18, Failures: 8.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 2/3 points
+    ✓ testAFoo: ok
+    ✗ testABar: failed
+    ✓ testABaz: ok
+  B.+: 1/2 points
+    ✓ testBFoo: ok
+    ✗ testBBar: failed
+    ✓ testBBaz: ok
+  C.+: 0/2 points
+    ✗ testCFoo: failed
+    ✗ testCBar: failed
+    ✗ testCBaz: failed
+  D.+: 1/1.5 points
+    ✓ testDFoo: ok
+    ✗ testDBar: failed
+    ✓ testDBaz: ok
+  E.+: 0.5/2 points
+    ✓ testEFoo: ok
+    ✗ testEMorePoints: failed
+    ✗ testEBar: failed
+    ✓ testEBaz: ok
+  F.+: 2/2 points
+    ✓ testFFoo: ok
+    ✓ testFBar: ok
+
+Info: The detailed test and error information is visible above the result summary.
+

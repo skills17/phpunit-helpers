@@ -1,0 +1,53 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+..F..F..F..F                                                      12 / 12 (100%)
+
+Time: 00:00.124, Memory: 6.00 MB
+
+There were 4 failures:
+
+1) Skills17\PHPUnit\Test\Integration\ConfigDefaultPoints\SomeTest::testABaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/config-default-points/tests/SomeTest.php:30
+
+2) Skills17\PHPUnit\Test\Integration\ConfigDefaultPoints\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/config-default-points/tests/SomeTest.php:54
+
+3) Skills17\PHPUnit\Test\Integration\ConfigDefaultPoints\SomeTest::testCBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/config-default-points/tests/SomeTest.php:78
+
+4) Skills17\PHPUnit\Test\Integration\ConfigDefaultPoints\SomeTest::testDBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/config-default-points/tests/SomeTest.php:102
+
+FAILURES!
+Tests: 12, Assertions: 12, Failures: 4.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 6/9 points
+    ✓ testAFoo: ok
+    ✓ testABar: ok
+    ✗ testABaz: failed
+  B.+: 1/1.5 points
+    ✓ testBFoo: ok
+    ✓ testBBar: ok
+    ✗ testBBaz: failed
+  C.+: 5/8 points
+    ✓ testCFoo: ok
+    ✓ testCLessPoints: ok
+    ✗ testCBaz: failed
+  D.+: 3/4 points
+    ✓ testDFoo: ok
+    ✓ testDMorePoints: ok
+    ✗ testDBaz: failed
+
+Info: The detailed test and error information is visible above the result summary.
+
