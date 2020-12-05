@@ -1,0 +1,17 @@
+{
+    "name": "skills17/phpunit-helpers-integration-config-env-overwrite",
+    "description": "Integration tests for skills17/phpunit-helpers",
+    "license": "MIT",
+    "scripts": {
+        "test": "DB_NAME=env-db DB_USER=env-user DB_PASSWORD=env-pw DB_HOST=env-host ../../../vendor/bin/phpunit",
+        "test:dump": "composer test > expected.txt",
+        "test:json": "FORMAT=json DB_NAME=env-db DB_USER=env-user DB_PASSWORD=env-pw DB_HOST=env-host ../../../vendor/bin/phpunit | tail -n +3",
+        "test:json:dump": "composer test:json > expected.json"
+    },
+    "authors": [
+        {
+            "name": "Cyril Wanner",
+            "email": "info@cyr.li"
+        }
+    ]
+}

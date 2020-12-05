@@ -1,0 +1,21 @@
+{
+    "testResults": [
+        {
+            "group": "Database.+",
+            "points": 1,
+            "maxPoints": 1,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testDatabaseConfigOverwrite",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                }
+            ]
+        }
+    ]
+}

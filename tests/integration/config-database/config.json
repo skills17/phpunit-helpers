@@ -1,0 +1,15 @@
+{
+  "database": {
+    "enabled": true,
+    "dump": "./db-dump-changed.sql",
+    "name": "skills17-changed",
+    "user": "anotherone",
+    "password": "supersecret",
+    "host": "db-host"
+  },
+  "groups": [
+    {
+      "match": "Database.+"
+    }
+  ]
+}
