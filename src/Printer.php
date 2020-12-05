@@ -108,7 +108,9 @@ class ResultPrinter extends DefaultResultPrinter
                     $color = 'fg-yellow';
                 }
 
-                $this->writeWithColor('bold', '  ' . $groupName . ': ', false);
+                $this->write('  ');
+                $this->writeWithColor('bold, underlined', '' . $groupName, false);
+                $this->writeWithColor('fg-blue', ': ', false);
                 $this->writeWithColor($color, $pointsText, !$manualCheckRequired);
 
                 if ($manualCheckRequired) {
@@ -163,7 +165,8 @@ class ResultPrinter extends DefaultResultPrinter
 
                     $this->write('    ');
                     $this->writeWithColor('fg-' . $resultColor . ', bold', $resultSymbol, false);
-                    $this->write(' ' . $testName . ': ');
+                    $this->write(' ' . $testName);
+                    $this->writeWithColor('fg-blue', ': ', false);
 
                     if ($resultColor === 'yellow') {
                         $this->writeWithColor('fg-yellow', 'WARNING: ', false);
