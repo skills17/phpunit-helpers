@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `username` VARCHAR(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `users` (`username`) VALUES ('admin');

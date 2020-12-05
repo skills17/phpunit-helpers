@@ -1,11 +1,15 @@
 {
   "name": "skills17-phpunit-helpers",
-  "image": "mcr.microsoft.com/vscode/devcontainers/php:7.4",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/phpunit-helpers",
   "remoteUser": "vscode",
   "extensions": [
     "felixfbecker.php-debug",
     "bmewburn.vscode-intelephense-client",
-    "wongjn.php-sniffer"
+    "wongjn.php-sniffer",
+    "mtxr.sqltools",
+		"mtxr.sqltools-driver-mysql"
   ],
   "settings": {
     "[php]": {
@@ -15,7 +19,21 @@
       "editor.tabSize": 4
     },
     "php.suggest.basic": false,
-    "phpSniffer.autoDetect": true
+    "phpSniffer.autoDetect": true,
+    "sqltools.connections": [
+      {
+        "name": "Test database",
+        "driver": "MySQL",
+        "server": "db",
+        "database": "skills17",
+        "username": "root",
+        "password": "",
+        "connectionTimeout": 30,
+        "mysqlOptions": {
+          "authProtocol": "xprotocol"
+        }
+      }
+    ]
   },
   "postCreateCommand": "composer install"
 }

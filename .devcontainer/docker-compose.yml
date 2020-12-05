@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/phpunit-helpers:cached
+    command: sleep infinity
+    network_mode: service:db
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_DATABASE: skills17
+      MYSQL_USER: skills17
+      MYSQL_PASSWORD: superstrongpw
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'

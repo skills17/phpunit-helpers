@@ -1,0 +1,15 @@
+{
+  "database": {
+    "enabled": true,
+    "dump": "./db-dump.sql",
+    "name": "skills17"
+  },
+  "groups": [
+    {
+      "match": "Read.+"
+    },
+    {
+      "match": "Write.+"
+    }
+  ]
+}

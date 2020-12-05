@@ -48,7 +48,7 @@ abstract class DatabaseTest extends BaseTest
      */
     protected function resetDb()
     {
-        $dumpFile = realpath(Config::getProjectRoot() . Config::getInstance()->getDatabaseConfig()['dump']);
+        $dumpFile = Config::getProjectRoot() . Config::getInstance()->getDatabaseConfig()['dump'];
 
         if (!file_exists($dumpFile)) {
             $this->writeLine('Database dump (' . $dumpFile . ') does not exist');

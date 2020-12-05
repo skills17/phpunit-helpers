@@ -1,0 +1,70 @@
+{
+    "testResults": [
+        {
+            "group": "Read.+",
+            "points": 4,
+            "maxPoints": 4,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testReadAnotherFirst",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testReadAnotherSecond",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testReadSomeFirst",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testReadSomeSecond",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "Write.+",
+            "points": 2,
+            "maxPoints": 2,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testWriteFirst",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testWriteSecond",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "failed": false,
+                    "required": false,
+                    "manualCheck": false
+                }
+            ]
+        }
+    ]
+}

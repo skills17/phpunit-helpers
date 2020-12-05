@@ -1,0 +1,22 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+......                                                              6 / 6 (100%)
+
+Time: 00:00.342, Memory: 6.00 MB
+
+OK (6 tests, 20 assertions)
+
+------------       RESULT       ------------
+
+Summary:
+  Read.+: 4/4 points
+    ✓ testReadAnotherFirst: ok
+    ✓ testReadAnotherSecond: ok
+    ✓ testReadSomeFirst: ok
+    ✓ testReadSomeSecond: ok
+  Write.+: 2/2 points
+    ✓ testWriteFirst: ok
+    ✓ testWriteSecond: ok
+
+Info: The detailed test and error information is visible above the result summary.
+

@@ -47,11 +47,11 @@ class Config
         // directory and use it instead. this is mainly used during tests.
         if (!file_exists($projectRoot . DIRECTORY_SEPARATOR . 'config.json')) {
             if (file_exists(getcwd() . DIRECTORY_SEPARATOR . 'config.json')) {
-                return getcwd() . '/';
+                return getcwd() . DIRECTORY_SEPARATOR;
             }
         }
 
-        return $projectRoot . '/';
+        return $projectRoot . DIRECTORY_SEPARATOR;
     }
 
     /**

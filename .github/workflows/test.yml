@@ -9,18 +9,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .devcontainer
 
     steps:
     - uses: actions/checkout@v2
+    - name: Start containers
+      run: docker-compose up -d
     - name: Install dependencies
-      uses: php-actions/composer@v4
-      with:
-        command: install
-        php_version: 7.4
-        composer_version: 2
+      run: docker-compose exec -T --workdir /workspaces/phpunit-helpers app composer install
     - name: Test
-      uses: php-actions/composer@v4
-      with:
-        command: test
-        php_version: 7.4
-        composer_version: 2
+      run: docker-compose exec -T --workdir /workspaces/phpunit-helpers app composer test
