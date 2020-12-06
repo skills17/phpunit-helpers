@@ -72,7 +72,7 @@ PHPUnit so all PHPUnit assert functions are available as well.
 ### Database tests
 
 If the application under test requires a database, it should get reset before every test run to make
-sure the data during multiple test runs is consistent. For this case, there are two classes
+sure the data is consistent across multiple test runs. For this case, there are two classes
 available to extend.
 
 Additionally, a database dump has to be provided and specified in the `config.json` if it does not
@@ -80,7 +80,7 @@ have the default name.
 
 #### Read tests
 
-If the test or the part of the application that gets tested only _reads_ data from the database but
+If the test and the part of the application that gets tested only _reads_ data from the database but
 never writes/changes it, the `Skills17\PHPUnit\Database\ReadTest` class should get extended.
 
 To improve the performance, this type of test only resets the database once before the test class
@@ -105,7 +105,7 @@ test exactly the same things as the normal tests do, but with different values.
 For example, if your normal test contains a check to search the list of all countries by 'Sw*',
 copy the test into an extra test and change the search string to 'Ca*'.
 Since the competitors will not know the extra test, it would detect statically returned values
-that were just returned to satisfy the 'Sw*' tests.
+that were returned to simply satisfy the 'Sw*' tests instead of actually implement the search logic.
 
 Extra tests are detected by their namespace, which should contain `\Extra\`. That means, if your
 normal test is in the `Skills17\CountriesApp\Test` namespace, the extra test could be in
@@ -115,10 +115,10 @@ the normal tests. If they don't, a warning will be displayed.
 If an extra test fails while the corresponding normal test passes, a warning will be displayed that
 a manual review of that test is required since it detected possible cheating.
 The penalty then has to be decided manually from case to case, the points visible in the output
-assumed that the test passed.
+assumed that the test passed and there was no cheating.
 
 For the distribution of the task to the competitors, simply delete the folder containing all extra
-tests.
+tests. Nothing else needs to be done or configured.
 
 ## License
 
