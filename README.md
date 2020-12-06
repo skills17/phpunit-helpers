@@ -16,6 +16,9 @@ This package provides some PHPUnit helpers for usage in a skills competition env
   - [Non-database tests](#non-database-tests)
   - [Database tests](#database-tests)
   - [Extra tests](#extra-tests)
+- [Best practices](#best-practices)
+  - [Time limit](#time-limit)
+  - [Writing good test](#writing-good-test)
 - [License](#license)
 
 ## Installation
@@ -28,6 +31,31 @@ To install this package, simply run the following command:
 ```bash
 composer require skills17/phpunit-helpers
 ```
+
+Additionally, create a `phpunit.xml` file in the root folder of your task:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+         cacheResultFile="vendor/phpunit/phpunit.cache"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         printerClass="Skills17\PHPUnit\ResultPrinter"
+         printerFile="vendor/skills17/phpunit-helpers/src/Printer.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Tests">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+```
+
+To use the provided result printer, the `printerClass` and `printerFile` settings are required.
+The other ones are suggested settings but can be modified to match your requirements.
 
 ## Usage
 
@@ -119,6 +147,26 @@ assumed that the test passed and there was no cheating.
 
 For the distribution of the task to the competitors, simply delete the folder containing all extra
 tests. Nothing else needs to be done or configured.
+
+## Best practices
+
+### Time limit
+
+It is strongly recommended to enforce a time limit on the tests. Otherwise, an endless loop can
+break the whole testing pipeline.
+
+The following steps show how a time limit can be configured.
+
+1. Install the composer package `phpunit/php-invoker`
+1. Add `enforceTimeLimit="true"` to the `phpunit.xml` config file
+1. Annotate all tests with eather `@large` (60s timeout), `@medium` (10s timeout) or
+`@small` (1s timeout)
+
+The timeouts for all test sizes can be [configured](https://phpunit.readthedocs.io/en/9.3/risky-tests.html#risky-tests-test-execution-timeout).
+
+### Writing good test
+
+For additional advice for writing good tests in a competition environment, read [this blog post](https://skills17.ch/blog/automated-testing-in-a-competition-environment-2020).
 
 ## License
 
