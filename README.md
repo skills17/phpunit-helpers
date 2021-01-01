@@ -16,9 +16,10 @@ This package provides some PHPUnit helpers for usage in a skills competition env
   - [Non-database tests](#non-database-tests)
   - [Database tests](#database-tests)
   - [Extra tests](#extra-tests)
+  - [Output](#output)
 - [Best practices](#best-practices)
   - [Time limit](#time-limit)
-  - [Writing good test](#writing-good-test)
+  - [Writing good tests](#writing-good-tests)
 - [License](#license)
 
 ## Installation
@@ -56,6 +57,15 @@ Additionally, create a `phpunit.xml` file in the root folder of your task:
 
 To use the provided result printer, the `printerClass` and `printerFile` settings are required.
 The other ones are suggested settings but can be modified to match your requirements.
+
+It is suggested to add the two additional composer scripts so it is possible to run the tests by
+executing `composer test` or `composer test:json`.
+```json
+    "scripts": {
+        "test": "phpunit",
+        "test:json": "FORMAT=json phpunit | tail -n +3",
+    },
+```
 
 ## Usage
 
@@ -148,6 +158,11 @@ assumed that the test passed and there was no cheating.
 For the distribution of the task to the competitors, simply delete the folder containing all extra
 tests. Nothing else needs to be done or configured.
 
+### Output
+
+When the environment variable `FORMAT` is set to `json`, the result will be printed in json.
+Otherwise, a well formatted summary will be visible.
+
 ## Best practices
 
 ### Time limit
@@ -164,7 +179,7 @@ The following steps show how a time limit can be configured.
 
 The timeouts for all test sizes can be [configured](https://phpunit.readthedocs.io/en/9.3/risky-tests.html#risky-tests-test-execution-timeout).
 
-### Writing good test
+### Writing good tests
 
 For additional advice for writing good tests in a competition environment, read [this blog post](https://skills17.ch/blog/automated-testing-in-a-competition-environment-2020).
 
