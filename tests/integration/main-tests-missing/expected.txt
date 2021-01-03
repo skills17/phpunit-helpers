@@ -50,7 +50,6 @@ Summary:
   E.+: 1/2 points
     ✓ testEFoo: ok
     ✗ testEBar: failed
-  F.+: 0/0 points
 
 Info: The detailed test and error information is visible above the result summary.
 

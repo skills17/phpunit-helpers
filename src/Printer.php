@@ -86,6 +86,7 @@ class ResultPrinter extends DefaultResultPrinter
             $maxGroupPoints = $this->calculateMaxGroupPoints($groupIndex);
             $scoredGroupPoints = $this->calculateScoredGroupPoints($groupIndex);
             $manualCheckRequired = $this->groupRequiresManualCheck($groupIndex);
+            $hasMainTests = $this->groupHasMainTests($groupIndex);
             $groupJson = [
                 'group' => $groupName,
                 'points' => $scoredGroupPoints,
@@ -97,7 +98,7 @@ class ResultPrinter extends DefaultResultPrinter
 
 
             // Print the group header
-            if (!$this->json) {
+            if (!$this->json && $hasMainTests) {
                 $pointsText = $scoredGroupPoints . '/' . $maxGroupPoints . ' point' .
                     ($maxGroupPoints !== 1.0 ? 's' : '');
 
@@ -177,7 +178,7 @@ class ResultPrinter extends DefaultResultPrinter
                 }
             }
 
-            if ($this->json) {
+            if ($this->json && $hasMainTests) {
                 $json['testResults'][] = $groupJson;
             }
         }
@@ -334,6 +335,20 @@ class ResultPrinter extends DefaultResultPrinter
                 if ($result['main']['status'] === true && $result['extra']['status'] === false) {
                     return true;
                 }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if a group has at least one main test
+     */
+    private function groupHasMainTests(int $groupIndex): bool
+    {
+        foreach ($this->results[$groupIndex] as $result) {
+            if (isset($result['main'])) {
+                return true;
             }
         }
 
