@@ -65,6 +65,31 @@
                     "manualCheck": false
                 }
             ]
+        },
+        {
+            "group": "C.+",
+            "points": 2,
+            "maxPoints": 2,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testCFoo",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testCRequired",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": true,
+                    "manualCheck": false
+                }
+            ]
         }
     ]
 }

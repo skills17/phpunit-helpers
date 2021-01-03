@@ -41,4 +41,14 @@ class SomeTest extends BaseTest
     {
         $this->assertTrue(false);
     }
+
+    public function testCFoo()
+    {
+        $this->assertTrue(true);
+    }
+
+    public function testCRequired()
+    {
+        $this->assertTrue(true);
+    }
 }

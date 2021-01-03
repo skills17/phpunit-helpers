@@ -1,6 +1,6 @@
 PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
 
-.FF..F                                                              6 / 6 (100%)
+.FF..F..                                                            8 / 8 (100%)
 
 Time: 00:00.033, Memory: 6.00 MB
 
@@ -22,7 +22,7 @@ Failed asserting that false is true.
 /workspaces/phpunit-helpers/tests/integration/required-test/tests/SomeTest.php:42
 
 FAILURES!
-Tests: 6, Assertions: 6, Failures: 3.
+Tests: 8, Assertions: 8, Failures: 3.
 
 ------------       RESULT       ------------
 
@@ -35,6 +35,9 @@ Summary:
     ✓ testBFoo: ok
     ✓ testBBar: ok
     ✗ testBRequired: failed
+  C.+: 2/2 points
+    ✓ testCFoo: ok
+    ✓ testCRequired: ok
 
 Info: The detailed test and error information is visible above the result summary.
 

@@ -19,6 +19,15 @@
           "required": true
         }
       ]
+    },
+    {
+      "match": "C.+",
+      "tests": [
+        {
+          "match": "CRequired",
+          "required": true
+        }
+      ]
     }
   ]
 }
