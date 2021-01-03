@@ -11,7 +11,7 @@
                     "name": "testAFoo",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -19,7 +19,7 @@
                     "name": "testABar",
                     "points": 0,
                     "maxPoints": 1,
-                    "failed": true,
+                    "successful": false,
                     "required": false,
                     "manualCheck": false
                 },
@@ -27,7 +27,7 @@
                     "name": "testARequired",
                     "points": 0,
                     "maxPoints": 1,
-                    "failed": true,
+                    "successful": false,
                     "required": true,
                     "manualCheck": false
                 }
@@ -44,7 +44,7 @@
                     "name": "testBFoo",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -52,7 +52,7 @@
                     "name": "testBBar",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -60,7 +60,7 @@
                     "name": "testBRequired",
                     "points": 0,
                     "maxPoints": 1,
-                    "failed": true,
+                    "successful": false,
                     "required": true,
                     "manualCheck": false
                 }

@@ -11,7 +11,7 @@
                     "name": "testDatabaseConfigOverwrite",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 }

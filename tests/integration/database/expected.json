@@ -11,7 +11,7 @@
                     "name": "testReadAnotherFirst",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -19,7 +19,7 @@
                     "name": "testReadAnotherSecond",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -27,7 +27,7 @@
                     "name": "testReadSomeFirst",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -35,7 +35,7 @@
                     "name": "testReadSomeSecond",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 }
@@ -52,7 +52,7 @@
                     "name": "testWriteFirst",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 },
@@ -60,7 +60,7 @@
                     "name": "testWriteSecond",
                     "points": 1,
                     "maxPoints": 1,
-                    "failed": false,
+                    "successful": true,
                     "required": false,
                     "manualCheck": false
                 }

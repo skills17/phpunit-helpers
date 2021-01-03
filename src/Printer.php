@@ -137,7 +137,7 @@ class ResultPrinter extends DefaultResultPrinter
                         'name' => $testName,
                         'points' => $result['main']['status'] === true ? $result['main']['points'] : 0,
                         'maxPoints' => $result['main']['points'],
-                        'failed' => $result['main']['status'] === false,
+                        'successful' => $result['main']['status'] === true,
                         'required' => $result['main']['required'] === true,
                         'manualCheck' => $result['main']['status'] === true && isset($result['extra']) &&
                             $result['extra']['status'] === false,
