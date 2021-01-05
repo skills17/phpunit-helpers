@@ -5,7 +5,7 @@
   "groups": [
     {
       "match": "A.+",
-      "maxPoints": "2"
+      "maxPoints": 2
     },
     {
       "match": "B.+",
