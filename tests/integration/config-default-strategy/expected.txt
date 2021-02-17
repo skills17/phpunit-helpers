@@ -23,13 +23,13 @@ Tests: 6, Assertions: 6, Failures: 2.
 
 Summary:
   A.+: 1/2 points
-    ✓ testAFoo: ok
-    ✓ testABar: ok
-    ✗ testABaz: failed
+    ✓ testAFoo
+    ✓ testABar
+    ✗ testABaz
   B.+: 2/3 points
-    ✓ testBFoo: ok
-    ✓ testBBar: ok
-    ✗ testBBaz: failed
+    ✓ testBFoo
+    ✓ testBBar
+    ✗ testBBaz
 
 Info: The detailed test and error information is visible above the result summary.
 

@@ -145,7 +145,6 @@ class ResultPrinter extends DefaultResultPrinter
                     ];
                 } else {
                     if ($result['main']['status'] === false) {
-                        $resultText = 'failed';
                         $resultSymbol = '✗';
                         $resultColor = 'red';
                     } elseif (
@@ -155,11 +154,9 @@ class ResultPrinter extends DefaultResultPrinter
                             $result['extra']['status'] === true
                         )
                     ) {
-                        $resultText = 'ok';
                         $resultSymbol = '✓';
                         $resultColor = 'green';
                     } else {
-                        $resultText = 'please check manually for static return values and/or logical errors';
                         $resultSymbol = '?';
                         $resultColor = 'yellow';
                     }
@@ -167,13 +164,15 @@ class ResultPrinter extends DefaultResultPrinter
                     $this->write('    ');
                     $this->writeWithColor('fg-' . $resultColor . ', bold', $resultSymbol, false);
                     $this->write(' ' . $testName);
-                    $this->writeWithColor('fg-blue', ': ', false);
 
                     if ($resultColor === 'yellow') {
-                        $this->writeWithColor('fg-yellow', 'WARNING: ', false);
+                        $this->writeWithColor(
+                            'fg-yellow',
+                            ' please check manually for static return values and/or logical errors',
+                            false
+                        );
                     }
 
-                    $this->write($resultText);
                     $this->writeNewLine();
                 }
             }

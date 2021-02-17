@@ -53,29 +53,29 @@ Tests: 18, Assertions: 18, Failures: 8.
 
 Summary:
   A.+: 2/3 points
-    ✓ testAFoo: ok
-    ✗ testABar: failed
-    ✓ testABaz: ok
+    ✓ testAFoo
+    ✗ testABar
+    ✓ testABaz
   B.+: 1/2 points
-    ✓ testBFoo: ok
-    ✗ testBBar: failed
-    ✓ testBBaz: ok
+    ✓ testBFoo
+    ✗ testBBar
+    ✓ testBBaz
   C.+: 0/2 points
-    ✗ testCFoo: failed
-    ✗ testCBar: failed
-    ✗ testCBaz: failed
+    ✗ testCFoo
+    ✗ testCBar
+    ✗ testCBaz
   D.+: 1/1.5 points
-    ✓ testDFoo: ok
-    ✗ testDBar: failed
-    ✓ testDBaz: ok
+    ✓ testDFoo
+    ✗ testDBar
+    ✓ testDBaz
   E.+: 0.5/2 points
-    ✓ testEFoo: ok
-    ✗ testEMorePoints: failed
-    ✗ testEBar: failed
-    ✓ testEBaz: ok
+    ✓ testEFoo
+    ✗ testEMorePoints
+    ✗ testEBar
+    ✓ testEBaz
   F.+: 2/2 points
-    ✓ testFFoo: ok
-    ✓ testFBar: ok
+    ✓ testFFoo
+    ✓ testFBar
 
 Info: The detailed test and error information is visible above the result summary.
 

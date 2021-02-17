@@ -38,18 +38,18 @@ Tests: 19, Assertions: 19, Failures: 5.
 
 Summary:
   A.+: 1/1 point
-    ✓ testAFoo: ok
+    ✓ testAFoo
   B.+: 2/3 points
-    ✓ testBFoo: ok
-    ✓ testBBar: ok
-    ✗ testBBaz: failed
+    ✓ testBFoo
+    ✓ testBBar
+    ✗ testBBaz
   C.+: 1/1 point
-    ✓ testCFoo: ok
+    ✓ testCFoo
   D.+: 0/1 point
-    ✗ testDFoo: failed
+    ✗ testDFoo
   E.+: 1/2 points
-    ✓ testEFoo: ok
-    ✗ testEBar: failed
+    ✓ testEFoo
+    ✗ testEBar
 
 Info: The detailed test and error information is visible above the result summary.
 

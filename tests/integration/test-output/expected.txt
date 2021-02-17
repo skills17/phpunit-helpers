@@ -19,20 +19,20 @@ OK (12 tests, 12 assertions)
 
 Summary:
   Output.+: 4/4 points
-    ✓ testOutputEcho: ok
-    ✓ testOutputVarDump: ok
-    ✓ testOutputPrint: ok
-    ✓ testOutputPrintR: ok
+    ✓ testOutputEcho
+    ✓ testOutputVarDump
+    ✓ testOutputPrint
+    ✓ testOutputPrintR
   DbWrite.+: 4/4 points
-    ✓ testDbWriteOutputEcho: ok
-    ✓ testDbWriteOutputVarDump: ok
-    ✓ testDbWriteOutputPrint: ok
-    ✓ testDbWriteOutputPrintR: ok
+    ✓ testDbWriteOutputEcho
+    ✓ testDbWriteOutputVarDump
+    ✓ testDbWriteOutputPrint
+    ✓ testDbWriteOutputPrintR
   DbRead.+: 4/4 points
-    ✓ testDbReadOutputEcho: ok
-    ✓ testDbReadOutputVarDump: ok
-    ✓ testDbReadOutputPrint: ok
-    ✓ testDbReadOutputPrintR: ok
+    ✓ testDbReadOutputEcho
+    ✓ testDbReadOutputVarDump
+    ✓ testDbReadOutputPrint
+    ✓ testDbReadOutputPrintR
 
 Info: The detailed test and error information is visible above the result summary.
 
