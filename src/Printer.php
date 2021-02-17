@@ -215,7 +215,7 @@ class ResultPrinter extends DefaultResultPrinter
         }
 
         // print warnings: groups without a test
-        if (count($emptyGroups) > 0) {
+        if ($this->hasExtraTests && count($emptyGroups) > 0) {
             $json['warnings'][] = $this->printTestWarnings(
                 'The following groups do not have any test:',
                 $emptyGroups
