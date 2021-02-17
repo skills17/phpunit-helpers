@@ -17,6 +17,7 @@ This package provides some PHPUnit helpers for usage in a skills competition env
   - [Database tests](#database-tests)
   - [Extra tests](#extra-tests)
   - [Output](#output)
+  - [`setUp` fixture](#setup-fixture)
 - [Best practices](#best-practices)
   - [Time limit](#time-limit)
   - [Writing good tests](#writing-good-tests)
@@ -162,6 +163,19 @@ tests. Nothing else needs to be done or configured.
 
 When the environment variable `FORMAT` is set to `json`, the result will be printed in json.
 Otherwise, a well formatted summary will be visible.
+
+### `setUp` fixture
+
+If you overwrite the `setUp` fixture in your own test class, make sure to call the parent method.
+
+```php
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        // your own code here
+    }
+```
 
 ## Best practices
 
