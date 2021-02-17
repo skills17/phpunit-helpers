@@ -17,6 +17,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Start containers
       run: docker-compose up -d
+    - name: Wait for mysql to be ready
+      run: while ! docker-compose exec -T db mysqladmin ping; do sleep 1; done
     - name: Install dependencies
       run: docker-compose exec -T --workdir /workspaces/phpunit-helpers app composer install
     - name: Test
