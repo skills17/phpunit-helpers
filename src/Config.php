@@ -138,6 +138,14 @@ class Config
     }
 
     /**
+     * Returns whether the local history is enabled.
+     */
+    public function isLocalHistoryEnabled(): bool
+    {
+        return $this->config['localHistory'] ?? false;
+    }
+
+    /**
      * Merge two configuration arrays.
      */
     private function mergeConfig(array $config1, array $config2): array

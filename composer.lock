@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8be86a8a36720ed0279807e0592a812",
+    "content-hash": "78daa156afbc4d92fef07f2e6fb5f406",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -2094,6 +2094,48 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "perchten/rmrdir",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:perchten/php-rmrdir.git",
+                "reference": "1d0b86871cad90dc9ab67ba30b3b53533714c5f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/perchten/php-rmrdir/zipball/1d0b86871cad90dc9ab67ba30b3b53533714c5f0",
+                "reference": "1d0b86871cad90dc9ab67ba30b3b53533714c5f0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/rmrdir.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alastair Brayne",
+                    "email": "al@perchten.co.uk",
+                    "homepage": "http://perchten.co.uk"
+                }
+            ],
+            "description": "Recusrive rmdir for PHP",
+            "homepage": "https://github.com/perchten/php-rmrdir",
+            "keywords": [
+                "dir",
+                "recursive",
+                "rm",
+                "rm -r",
+                "rmdir"
+            ],
+            "time": "2019-10-24T11:00:22+00:00"
+        },
         {
             "name": "squizlabs/php_codesniffer",
             "version": "3.5.8",

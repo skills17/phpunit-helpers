@@ -6,12 +6,13 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
+         printerClass="Skills17\PHPUnit\ResultPrinter"
+         printerFile="../../../src/Printer.php"
          colors="true"
 >
     <testsuites>
-        <testsuite name="Integration Tests">
-            <file>./tests/integration/IntegrationTest.php</file>
-            <file>./tests/integration/LocalHistoryTest.php</file>
+        <testsuite name="Tests">
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

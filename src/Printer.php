@@ -133,25 +133,25 @@ class ResultPrinter extends DefaultResultPrinter
                     $missingExtraTests[] = $groupName . ' > ' . $testName;
                 }
 
-                if ($this->json) {
-                    $groupJson['tests'][] = [
-                        'name' => $testName,
-                        'points' => $result['main']['status'] === true ? $result['main']['points'] : 0,
-                        'maxPoints' => $result['main']['points'],
-                        'successful' => $result['main']['status'] === true,
-                        'required' => $result['main']['required'] === true,
-                        'manualCheck' => $result['main']['status'] === true && isset($result['extra']) &&
-                            $result['extra']['status'] === false,
-                    ];
-                } else {
+                $groupJson['tests'][] = [
+                    'name' => $testName,
+                    'points' => $result['main']['status'] === true ? $result['main']['points'] : 0,
+                    'maxPoints' => $result['main']['points'],
+                    'successful' => $result['main']['status'] === true,
+                    'required' => $result['main']['required'] === true,
+                    'manualCheck' => $result['main']['status'] === true && isset($result['extra']) &&
+                    $result['extra']['status'] === false,
+                ];
+
+                if (!$this->json) {
                     if ($result['main']['status'] === false) {
                         $resultSymbol = '✗';
                         $resultColor = 'red';
                     } elseif (
                         $result['main']['status'] === true && (
-                            !$this->hasExtraTests ||
-                            !isset($result['extra']['status']) ||
-                            $result['extra']['status'] === true
+                        !$this->hasExtraTests ||
+                        !isset($result['extra']['status']) ||
+                        $result['extra']['status'] === true
                         )
                     ) {
                         $resultSymbol = '✓';
@@ -177,7 +177,7 @@ class ResultPrinter extends DefaultResultPrinter
                 }
             }
 
-            if ($this->json && $hasMainTests) {
+            if ($hasMainTests) {
                 $json['testResults'][] = $groupJson;
             }
         }
@@ -231,6 +231,10 @@ class ResultPrinter extends DefaultResultPrinter
             $this->write(json_encode($json, JSON_PRETTY_PRINT));
         } else {
             $this->write("\n");
+        }
+
+        if (Config::getInstance()->isLocalHistoryEnabled()) {
+            $this->saveHistory($json);
         }
     }
 
@@ -408,5 +412,20 @@ class ResultPrinter extends DefaultResultPrinter
         }
 
         return $warning . "\n  - " . implode("\n  - ", $tests);
+    }
+
+    /**
+     * Saves the test result to the local history
+     */
+    private function saveHistory(array $result): void
+    {
+        $historyDir = Config::getProjectRoot() . DIRECTORY_SEPARATOR . '.history';
+        $historyFile = $historyDir . DIRECTORY_SEPARATOR . uniqid() . '.json';
+
+        if (!file_exists($historyDir)) {
+            mkdir($historyDir);
+        }
+
+        file_put_contents($historyFile, json_encode(array_merge(['time' => time()], $result), JSON_PRETTY_PRINT));
     }
 }

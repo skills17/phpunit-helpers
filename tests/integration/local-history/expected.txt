@@ -1,0 +1,34 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+..FF                                                                4 / 4 (100%)
+
+Time: 00:00.110, Memory: 6.00 MB
+
+There were 2 failures:
+
+1) Skills17\PHPUnit\Test\Integration\LocalHistory\LocalHistoryTest::testBBar
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/local-history/tests/LocalHistoryTest.php:21
+
+2) Skills17\PHPUnit\Test\Integration\LocalHistory\LocalHistoryTest::testCFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/local-history/tests/LocalHistoryTest.php:26
+
+FAILURES!
+Tests: 4, Assertions: 4, Failures: 2.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+: 1/1 point
+    ✓ testAFoo
+  B.+: 1/2 points
+    ✓ testBFoo
+    ✗ testBBar
+  C.+: 0/1 point
+    ✗ testCFoo
+
+Info: The detailed test and error information is visible above the result summary.
+
