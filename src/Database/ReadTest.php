@@ -9,6 +9,8 @@ abstract class ReadTest extends DatabaseTest
      */
     public function setUp(): void
     {
+        parent::setUp();
+
         if (!isset(self::$dbReset[get_class($this)])) {
             $this->resetDb();
 

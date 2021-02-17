@@ -1,0 +1,38 @@
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+
+.This is an echo output
+.int(1234)
+.This is a print output
+.4321.This is an echo output
+.int(1234)
+.This is a print output
+.4321.This is an echo output
+.int(1234)
+.This is a print output
+.                                                      12 / 12 (100%)4321
+
+Time: 00:00.879, Memory: 6.00 MB
+
+OK (12 tests, 12 assertions)
+
+------------       RESULT       ------------
+
+Summary:
+  Output.+: 4/4 points
+    ✓ testOutputEcho: ok
+    ✓ testOutputVarDump: ok
+    ✓ testOutputPrint: ok
+    ✓ testOutputPrintR: ok
+  DbWrite.+: 4/4 points
+    ✓ testDbWriteOutputEcho: ok
+    ✓ testDbWriteOutputVarDump: ok
+    ✓ testDbWriteOutputPrint: ok
+    ✓ testDbWriteOutputPrintR: ok
+  DbRead.+: 4/4 points
+    ✓ testDbReadOutputEcho: ok
+    ✓ testDbReadOutputVarDump: ok
+    ✓ testDbReadOutputPrint: ok
+    ✓ testDbReadOutputPrintR: ok
+
+Info: The detailed test and error information is visible above the result summary.
+

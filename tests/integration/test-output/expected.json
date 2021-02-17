@@ -1,0 +1,128 @@
+
+{
+    "testResults": [
+        {
+            "group": "Output.+",
+            "points": 4,
+            "maxPoints": 4,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testOutputEcho",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testOutputVarDump",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testOutputPrint",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testOutputPrintR",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "DbWrite.+",
+            "points": 4,
+            "maxPoints": 4,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testDbWriteOutputEcho",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDbWriteOutputVarDump",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDbWriteOutputPrint",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDbWriteOutputPrintR",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                }
+            ]
+        },
+        {
+            "group": "DbRead.+",
+            "points": 4,
+            "maxPoints": 4,
+            "strategy": "add",
+            "manualCheck": false,
+            "tests": [
+                {
+                    "name": "testDbReadOutputEcho",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDbReadOutputVarDump",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDbReadOutputPrint",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                },
+                {
+                    "name": "testDbReadOutputPrintR",
+                    "points": 1,
+                    "maxPoints": 1,
+                    "successful": true,
+                    "required": false,
+                    "manualCheck": false
+                }
+            ]
+        }
+    ]
+}

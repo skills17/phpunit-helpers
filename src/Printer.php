@@ -228,6 +228,7 @@ class ResultPrinter extends DefaultResultPrinter
                 unset($json['warnings']);
             }
 
+            $this->write("\n");
             $this->write(json_encode($json, JSON_PRETTY_PRINT));
         } else {
             $this->write("\n");

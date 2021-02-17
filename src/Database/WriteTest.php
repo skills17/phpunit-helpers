@@ -9,6 +9,8 @@ abstract class WriteTest extends DatabaseTest
      */
     public function setUp(): void
     {
+        parent::setUp();
+
         $this->resetDb();
     }
 }
