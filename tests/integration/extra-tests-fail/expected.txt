@@ -33,19 +33,19 @@ Tests: 18, Assertions: 18, Failures: 4.
 
 Summary:
   A.+: 1/1 point
-    ✓ testAFoo
+    ✔ testAFoo
   B.+: 2/3 points
-    ✓ testBFoo
-    ✓ testBBar
-    ✗ testBBaz
+    ✔ testBFoo
+    ✔ testBBar
+    ✖ testBBaz
   C.+: 2/2 points
-    ✓ testCFoo
-    ✓ testCBar
+    ✔ testCFoo
+    ✔ testCBar
   D.+: 1/1 point [manual check required]
     ? testDFoo please check manually for static return values and/or logical errors
   E.+: 2/2 points [manual check required]
     ? testEFoo please check manually for static return values and/or logical errors
-    ✓ testEBar
+    ✔ testEBar
 
 Info: The detailed test and error information is visible above the result summary.
 

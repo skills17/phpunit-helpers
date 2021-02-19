@@ -145,7 +145,7 @@ class ResultPrinter extends DefaultResultPrinter
 
                 if (!$this->json) {
                     if ($result['main']['status'] === false) {
-                        $resultSymbol = '✗';
+                        $resultSymbol = '✖';
                         $resultColor = 'red';
                     } elseif (
                         $result['main']['status'] === true && (
@@ -154,7 +154,7 @@ class ResultPrinter extends DefaultResultPrinter
                         $result['extra']['status'] === true
                         )
                     ) {
-                        $resultSymbol = '✓';
+                        $resultSymbol = '✔';
                         $resultColor = 'green';
                     } else {
                         $resultSymbol = '?';

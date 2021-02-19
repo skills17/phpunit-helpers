@@ -33,21 +33,21 @@ Tests: 12, Assertions: 12, Failures: 4.
 
 Summary:
   A.+: 6/9 points
-    ✓ testAFoo
-    ✓ testABar
-    ✗ testABaz
+    ✔ testAFoo
+    ✔ testABar
+    ✖ testABaz
   B.+: 1/1.5 points
-    ✓ testBFoo
-    ✓ testBBar
-    ✗ testBBaz
+    ✔ testBFoo
+    ✔ testBBar
+    ✖ testBBaz
   C.+: 5/8 points
-    ✓ testCFoo
-    ✓ testCLessPoints
-    ✗ testCBaz
+    ✔ testCFoo
+    ✔ testCLessPoints
+    ✖ testCBaz
   D.+: 3/4 points
-    ✓ testDFoo
-    ✓ testDMorePoints
-    ✗ testDBaz
+    ✔ testDFoo
+    ✔ testDMorePoints
+    ✖ testDBaz
 
 Info: The detailed test and error information is visible above the result summary.
 

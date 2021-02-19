@@ -28,16 +28,16 @@ Tests: 8, Assertions: 8, Failures: 3.
 
 Summary:
   A.+: 0/3 points
-    ✓ testAFoo
-    ✗ testABar
-    ✗ testARequired
+    ✔ testAFoo
+    ✖ testABar
+    ✖ testARequired
   B.+: 0/2 points
-    ✓ testBFoo
-    ✓ testBBar
-    ✗ testBRequired
+    ✔ testBFoo
+    ✔ testBBar
+    ✖ testBRequired
   C.+: 2/2 points
-    ✓ testCFoo
-    ✓ testCRequired
+    ✔ testCFoo
+    ✔ testCRequired
 
 Info: The detailed test and error information is visible above the result summary.
 
