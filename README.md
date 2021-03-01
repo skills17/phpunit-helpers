@@ -63,8 +63,8 @@ It is suggested to add the two additional composer scripts so it is possible to 
 executing `composer test` or `composer test:json`.
 ```json
     "scripts": {
-        "test": "phpunit",
-        "test:json": "FORMAT=json phpunit | tail -n +3",
+        "test": "phpunit --colors=always",
+        "test:json": "FORMAT=json phpunit | tail -n +3"
     },
 ```
 
