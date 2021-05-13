@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/php:7.4
+FROM mcr.microsoft.com/vscode/devcontainers/php:8.0
 
 RUN docker-php-ext-install pdo pdo_mysql
 

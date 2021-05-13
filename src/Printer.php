@@ -285,6 +285,8 @@ class ResultPrinter extends DefaultResultPrinter
             // check if the test was successful or not
             if (isset($result['main'])) {
                 $testSuccessful = $result['main']['status'];
+            } else {
+                continue;
             }
 
             // add or deduct points based on the strategy
