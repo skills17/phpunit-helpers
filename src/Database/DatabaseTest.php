@@ -58,8 +58,6 @@ abstract class DatabaseTest extends BaseTest
         $lines = file($dumpFile);
         $statement = '';
 
-        $this->db->beginTransaction();
-
         // parse the dump because PDO can only execute one statement at a time
         foreach ($lines as $line) {
             $trimmedLine = trim($line);
@@ -80,7 +78,5 @@ abstract class DatabaseTest extends BaseTest
                 $statement = '';
             }
         }
-
-        $this->db->commit();
     }
 }
