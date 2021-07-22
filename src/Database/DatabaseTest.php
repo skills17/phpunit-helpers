@@ -70,7 +70,6 @@ abstract class DatabaseTest extends BaseTest
                 try {
                     $this->db->exec($statement);
                 } catch (\PDOException $e) {
-                    $this->db->rollBack();
                     $this->writeLine('Error during DB reset:', $e->getMessage());
                     $this->writeLine('Statement:', $statement);
                     exit(1);
