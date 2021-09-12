@@ -111,8 +111,13 @@ class ResultPrinter extends DefaultResultPrinter
 
                 $this->write('  ');
                 $this->writeWithColor('bold, underlined', '' . $groupName, false);
-                $this->writeWithColor('fg-blue', ': ', false);
-                $this->writeWithColor($color, $pointsText, !$manualCheckRequired);
+
+                if (Config::getInstance()->arePointsShown()) {
+                    $this->writeWithColor('fg-blue', ': ', false);
+                    $this->writeWithColor($color, $pointsText, !$manualCheckRequired);
+                } elseif (!$manualCheckRequired) {
+                    $this->writeNewLine();
+                }
 
                 if ($manualCheckRequired) {
                     $this->writeWithColor('fg-yellow, bold', ' [manual check required]');

@@ -146,6 +146,14 @@ class Config
     }
 
     /**
+     * Returns whether points are shown.
+     */
+    public function arePointsShown(): bool
+    {
+        return $this->config['showPoints'] ?? true;
+    }
+
+    /**
      * Merge two configuration arrays.
      */
     private function mergeConfig(array $config1, array $config2): array

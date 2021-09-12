@@ -1,0 +1,51 @@
+PHPUnit 9.4.3 by Sebastian Bergmann and contributors.
+
+...F..FF....F.....                                                18 / 18 (100%)
+
+Time: 00:00.147, Memory: 6.00 MB
+
+There were 4 failures:
+
+1) Skills17\PHPUnit\Test\Integration\HidePoints\Extra\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/hide-points/tests/Extra/SomeTest.php:26
+
+2) Skills17\PHPUnit\Test\Integration\HidePoints\Extra\SomeTest::testDFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/hide-points/tests/Extra/SomeTest.php:41
+
+3) Skills17\PHPUnit\Test\Integration\HidePoints\Extra\SomeTest::testEFoo
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/hide-points/tests/Extra/SomeTest.php:46
+
+4) Skills17\PHPUnit\Test\Integration\HidePoints\SomeTest::testBBaz
+Failed asserting that false is true.
+
+/workspaces/phpunit-helpers/tests/integration/hide-points/tests/SomeTest.php:26
+
+FAILURES!
+Tests: 18, Assertions: 18, Failures: 4.
+
+------------       RESULT       ------------
+
+Summary:
+  A.+
+    ✔ testAFoo
+  B.+
+    ✔ testBFoo
+    ✔ testBBar
+    ✖ testBBaz
+  C.+
+    ✔ testCFoo
+    ✔ testCBar
+  D.+ [manual check required]
+    ? testDFoo please check manually for static return values and/or logical errors
+  E.+ [manual check required]
+    ? testEFoo please check manually for static return values and/or logical errors
+    ✔ testEBar
+
+Info: The detailed test and error information is visible above the result summary.
+
